@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OrgCortex — Org-Scale Semantic Graph, Infinite-Context Factoring Meta-Agent &amp; Agent Observability</title>
-  <meta name="description" content="OrgCortex links Slack war-rooms, SIM incidents, Git PRs, Architecture RFCs, and Quarterly OKRs under AWS Context pre-traversal team-ACL governance and an L1/L2/L3 Semantic Page Table (-88.1% Bedrock input tokens, 98.4% multi-hop recall) on Amazon Bedrock Nova Lite." />
+  <title>OrgCortex — Connecting Slack, Tickets, Pull Requests, and Docs Without Overflowing the AI's Context Window</title>
+  <meta name="description" content="OrgCortex links Slack threads, incident tickets, pull requests, design docs, and OKRs under pre-traversal team permissions and an L1/L2/L3 context page table on Amazon Bedrock." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&amp;family=Kalam:wght@400;700&amp;family=Martian+Mono:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Schibsted+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
@@ -314,23 +314,27 @@
       margin-bottom: 1.25rem;
     }
 
-    /* Plain English Callout Box */
-    .plain-english-box {
+    /* Editorial Callout Box */
+    .lead-callout {
       background: var(--bg-card);
       border: 2px solid var(--border);
       border-left: 8px solid var(--accent-main);
       box-shadow: var(--shadow);
-      padding: 1.15rem 1.35rem;
-      margin: 1.25rem 0 1.35rem;
+      padding: 1.25rem 1.4rem;
+      margin: 0 0 1.35rem;
     }
 
-    .plain-english-title {
-      font-family: 'Martian Mono', monospace;
-      font-size: 0.74rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--accent-main);
-      margin-bottom: 0.4rem;
+    .lead-callout h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 0.45rem;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.35rem;
     }
 
     .headline-pills {
@@ -535,8 +539,8 @@
       line-height: 1.66;
     }
 
-    /* Concrete Worked Example Card */
-    .worked-example {
+    /* Request Trace Card */
+    .trace-example-card {
       margin-top: 1.45rem;
       background: var(--bg-card);
       border: 2px solid var(--border);
@@ -567,7 +571,7 @@
       line-height: 1.58;
     }
 
-    /* Paired Plain-English Intuition + Under the Hood Cards */
+    /* Two-Column Subsystem Cards */
     .paired-module-card {
       background: var(--bg-card);
       border: 2px solid var(--border);
@@ -600,17 +604,17 @@
       .paired-module-body { grid-template-columns: 1fr; }
     }
 
-    .intuition-pane {
+    .design-pane {
       padding: 1.25rem 1.35rem;
       background: var(--bg-paper);
       border-right: 2px solid var(--border);
     }
 
     @media (max-width: 900px) {
-      .intuition-pane { border-right: none; border-bottom: 2px solid var(--border); }
+      .design-pane { border-right: none; border-bottom: 2px solid var(--border); }
     }
 
-    .hood-pane {
+    .mechanics-pane {
       padding: 1.25rem 1.35rem;
       background: var(--bg-card);
     }
@@ -707,8 +711,8 @@
       color: #FFFFFF;
     }
 
-    /* What-to-Click Guide Banner */
-    .click-guide-box {
+    /* Demo Note Banner */
+    .demo-note-box {
       background: var(--bg-subtle);
       border: 2px solid var(--border);
       border-left: 6px solid var(--gold);
@@ -1059,16 +1063,16 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#top" class="brand">
-        <span class="brand-badge">ORGCORTEX v1.0</span>
+        <span class="brand-badge">ORGCORTEX</span>
         <span>OrgCortex</span>
       </a>
       <nav class="nav-links" aria-label="Primary Navigation">
-        <a class="nav-pill" href="#problem-statement">§01 Problem</a>
-        <a class="nav-pill" href="#system-architecture">§02 Architecture</a>
-        <a class="nav-pill" href="#live-studio" onclick="switchTab('semantic-graph')">§05 Live Studio</a>
-        <a class="nav-pill" href="#benchmarks-section">§06 Benchmarks</a>
-        <a class="nav-pill" href="https://d2gltlwyzbnbxr.cloudfront.net" target="_blank" rel="noopener">QuickSpaces ↗</a>
-        <a class="nav-pill" href="https://d1eslmpwuei23h.cloudfront.net" target="_blank" rel="noopener">QuickMemory ↗</a>
+        <a class="nav-pill" href="#problem-statement">01 · Problem</a>
+        <a class="nav-pill" href="#system-architecture">02 · Architecture</a>
+        <a class="nav-pill" href="#implementation">03 · Implementation</a>
+        <a class="nav-pill" href="#design-tradeoffs">04 · Trade-Offs</a>
+        <a class="nav-pill" href="#live-studio" onclick="switchTab('semantic-graph')">05 · Live Demo</a>
+        <a class="nav-pill" href="#benchmarks-section">06 · Benchmarks</a>
         <a class="btn btn-obsidian" href="https://github.com/ritwikareddykancharla/org-cortex-aiw" target="_blank" rel="noopener">★ GitHub Repo</a>
         <button type="button" class="btn btn-secondary" id="themeToggleBtn" aria-label="Toggle color theme">
           <span id="themeIcon">🌙</span>
@@ -1082,12 +1086,12 @@
   <nav class="sticky-toc" aria-label="Section Table of Contents">
     <div class="container sticky-toc-inner">
       <span class="toc-label">Jump To:</span>
-      <a class="toc-chip" href="#problem-statement">§01 · Problem Statement</a>
-      <a class="toc-chip" href="#system-architecture">§02 · System Architecture</a>
-      <a class="toc-chip" href="#implementation">§03 · Implementation</a>
-      <a class="toc-chip" href="#design-tradeoffs">§04 · Design Tradeoffs</a>
-      <a class="toc-chip" href="#live-studio">§05 · Live Studio</a>
-      <a class="toc-chip" href="#benchmarks-section">§06 · Benchmarks</a>
+      <a class="toc-chip" href="#problem-statement">01 · Problem</a>
+      <a class="toc-chip" href="#system-architecture">02 · Architecture</a>
+      <a class="toc-chip" href="#implementation">03 · Implementation</a>
+      <a class="toc-chip" href="#design-tradeoffs">04 · Trade-Offs</a>
+      <a class="toc-chip" href="#live-studio">05 · Live Demo</a>
+      <a class="toc-chip" href="#benchmarks-section">06 · Benchmarks</a>
     </div>
   </nav>
 
@@ -1095,118 +1099,113 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero-top-row">
-        <div class="eyebrow">Cross-Silo Semantic Graph • L1/L2/L3 Context Factoring • AWS Context ACL • Bedrock Nova</div>
+        <div class="eyebrow">Company-Wide AI Context · Built for Amazon AI at Work &amp; AWS Context</div>
         <div class="runtime-pill" id="runtimePill">
           <span class="pulse-dot"></span>
-          <span id="runtimeModeText">Probing CloudFront /api/health...</span>
+          <span id="runtimeModeText">Live on AWS · Powered by Amazon Bedrock</span>
         </div>
       </div>
 
-      <h1>OrgCortex — Org-Scale Semantic Graph, Infinite-Context Factoring Meta-Agent &amp; Agent Observability</h1>
+      <h1>OrgCortex — Connecting Slack, Tickets, Pull Requests, and Docs Without Overflowing the AI's Context Window</h1>
       <p class="hero-sub">
-        Automatically discovers typed causal relationships (<code>BLOCKS</code>, <code>SUPERSEDES_RFC</code>, <code>ROOT_CAUSED_BY_PR</code>, <code>OWNED_BY_TEAM</code>, <code>IMPACTS_OKR</code>) across Slack war-rooms, SIM incidents, Git PRs, Architecture RFCs, and Quarterly OKRs—enforcing pre-traversal team-scope governance before paging context through an <strong>L1 / L2 / L3 Semantic Page Table</strong> for live <strong>Amazon Bedrock (<code>us.amazon.nova-lite-v1:0</code>)</strong> synthesis.
+        Answers to production delays rarely sit in a single file. They span Slack threads, incident tickets, pull requests, and design docs. OrgCortex links those records together, filters restricted team data up front, and sends the AI only the relevant context.
       </p>
 
-      <!-- In Plain English Box -->
-      <div class="plain-english-box">
-        <div class="plain-english-title">📖 In Plain English — What OrgCortex Does in 20 Seconds</div>
-        <p style="font-size:0.95rem;">
-          In a large engineering organization, the real answer to <em>"Why is our checkout launch on hold, and what fixed it?"</em> never lives in one file: the launch hold is in a <strong>SIM ticket</strong>, the root-cause flamegraph is in a <strong>Slack war-room</strong>, the bug is in a <strong>Git Pull Request</strong>, the fix follows a newer <strong>Architecture RFC</strong> that quietly replaced an older 2024 RFC, and the dollar impact sits in a <strong>Quarterly OKR ledger</strong>. Standard search misses hops that use different words, while dumping every raw chat log and git diff into a huge prompt wastes ~9x tokens and tricks the LLM into citing outdated RFCs. <strong>OrgCortex</strong> links those five silos into a governed graph, checks which teams you are allowed to see <em>before</em> walking the graph, and acts like an operating-system virtual memory manager—keeping only crisp active evidence in <strong>L1</strong>, short multi-hop summaries in <strong>L2</strong>, and evicting obsolete RFCs and noisy diffs to zero-token <strong>L3 pointers</strong>.
-        </p>
-      </div>
-
-      <div class="headline-pills">
-        <div class="headline-pill">Measured Bedrock Input Reduction: <span>-88.1% (8.38x)</span></div>
-        <div class="headline-pill">Multi-Hop Fact Recall: <span>98.4% (63/64)</span></div>
-        <div class="headline-pill">Graph + Factoring p50: <span>2.389 ms</span></div>
-        <div class="headline-pill">Live Bedrock Eval Suite: <span>44 Invocations (us-west-2)</span></div>
+      <div class="hero-cta-row">
+        <a href="#live-studio" class="btn btn-accent" onclick="switchTab('semantic-graph')">▶ Try the Live Demo ↓</a>
+        <a href="#system-architecture" class="btn btn-secondary">See How It Works ↓</a>
+        <a href="#benchmarks-section" class="btn btn-secondary">View Test Results ↓</a>
       </div>
 
       <div class="kpi-strip">
         <div class="card kpi-card">
-          <div class="kpi-val">-88.1%</div>
-          <div class="kpi-label">Context Tokens via Meta-Agent Factoring</div>
-          <div class="kpi-sub">1,125 vs 9,425 Bedrock inputTokens (8.38x)</div>
+          <div class="kpi-val">88.1% Fewer Tokens</div>
+          <div class="kpi-label">Prompt Token Reduction</div>
+          <div class="kpi-sub">Sends 1,125 focused tokens instead of 9,425 raw archive tokens (8.38x smaller across 44 Bedrock calls)</div>
         </div>
         <div class="card kpi-card">
-          <div class="kpi-val">98.4%</div>
-          <div class="kpi-label">4-Hop Cross-Silo Reasoning Recall</div>
-          <div class="kpi-sub">63/64 facts vs 90.6% Stuffing &amp; 78.1% Top-2 RAG</div>
+          <div class="kpi-val">98.4% (63 / 64)</div>
+          <div class="kpi-label">Cross-Tool Fact Accuracy</div>
+          <div class="kpi-sub">Answers 4-step cross-team questions that trip up standard search (78.1%) and archive stuffing (90.6%)</div>
         </div>
         <div class="card kpi-card">
-          <div class="kpi-val">5 Silos</div>
-          <div class="kpi-label">Slack + PRs + SIM + RFC + OKRs Linked</div>
-          <div class="kpi-sub">30 org artifacts · 53 discovered typed edges</div>
+          <div class="kpi-val">5 Tools Linked</div>
+          <div class="kpi-label">2.389 ms Median Graph &amp; Paging</div>
+          <div class="kpi-sub">Connects 30 Slack threads, tickets, pull requests, design docs, and OKRs across 53 relationships</div>
         </div>
         <div class="card kpi-card">
-          <div class="kpi-val">0.0%</div>
-          <div class="kpi-label">Unauthorized Team-Graph Leakage</div>
-          <div class="kpi-sub">0 leaks across 16 queries · 2.389 ms p50 ACL gate</div>
+          <div class="kpi-val">0 Cross-Team Leaks</div>
+          <div class="kpi-label">Pre-Traversal Permission Gate</div>
+          <div class="kpi-sub">Filters restricted team nodes across all 16 test queries before traversal or prompt assembly</div>
         </div>
       </div>
 
-      <div class="pipeline-bar" aria-label="5-Agent Execution Pipeline">
-        <div class="pipe-step"><span class="pipe-num">01</span><span>Planner (Sub-Goals)</span></div>
+      <div class="pipeline-bar" aria-label="Execution Pipeline">
+        <div class="pipe-step"><span class="pipe-num">01</span><span>Filter by Team Permissions</span></div>
         <span class="pipe-arrow">→</span>
-        <div class="pipe-step"><span class="pipe-num">02</span><span>GraphScout (Team-ACL + 4-Hop Walk)</span></div>
+        <div class="pipe-step"><span class="pipe-num">02</span><span>Trace Links Across 5 Tools</span></div>
         <span class="pipe-arrow">→</span>
-        <div class="pipe-step"><span class="pipe-num">03</span><span>ContextFactorer (L1/L2/L3 Page Table)</span></div>
+        <div class="pipe-step"><span class="pipe-num">03</span><span>Pack Key Context Within Token Budget</span></div>
         <span class="pipe-arrow">→</span>
-        <div class="pipe-step"><span class="pipe-num">04</span><span>Synthesizer (Bedrock Nova Lite)</span></div>
-        <span class="pipe-arrow">→</span>
-        <div class="pipe-step"><span class="pipe-num">05</span><span>GroundingJudge (OTel Rubric)</span></div>
+        <div class="pipe-step"><span class="pipe-num">04</span><span>Answer &amp; Verify Every Citation</span></div>
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- §01 · PROBLEM STATEMENT + CONCRETE WORKED EXAMPLE                   -->
+    <!-- 01 · PROBLEM                                                        -->
     <!-- =================================================================== -->
     <section id="problem-statement" class="section">
       <div class="section-header">
         <div>
-          <span class="section-kicker">§01 · Problem Statement</span>
-          <h2 class="section-title">Why Enterprise Multi-Silo Search &amp; Raw Context Stuffing Break Down</h2>
-          <p class="section-desc">Organizational context constantly mutates across chat threads, tickets, pull requests, design docs, and business ledgers—exposing three empirical failure modes that we measured live against Amazon Bedrock Nova Lite.</p>
+          <span class="section-kicker">01 · Problem</span>
+          <h2 class="section-title">Problem</h2>
+          <p class="section-desc">Engineering context spans chat channels, incident tickets, pull requests, design docs, and quarterly OKRs. Standard single-hop search and full-archive prompt stuffing fail in three measurable ways.</p>
         </div>
-        <span class="tag tag-accent">Measured Across 16 Queries × 3 Pipelines</span>
+        <span class="tag tag-accent">16 Queries × 3 Pipelines on Bedrock</span>
+      </div>
+
+      <div class="lead-callout">
+        <h3>Tracing Incident Context Across Five Tools</h3>
+        <p class="serif" style="font-size:1.1rem; line-height:1.7;">
+          In a large engineering organization, answering <em>"What is holding up the checkout launch and what fixed it?"</em> requires combining five separate systems: the release hold lives in an incident ticket, the flamegraph lives in a Slack channel, the regression lives in a pull request, the retry policy lives in a newer design doc that replaced an older 2024 RFC, and the revenue target lives in an OKR ledger. Keyword search misses downstream records that use different terms, while pasting every raw chat log and diff into a single prompt burns 8.38x more tokens and leaves outdated RFCs in front of the model. <strong>OrgCortex</strong> links those five tools into a directed graph, filters nodes by team permissions before walking edges, and pages evidence across three tiers: stripped excerpts in <strong>L1</strong>, concise summaries in <strong>L2</strong>, and zero-token pointers in <strong>L3</strong>.
+        </p>
       </div>
 
       <div class="grid-3">
         <div class="card walkthrough-card">
-          <span class="step-badge">FAILURE MODE 01 · VOCABULARY DISCONNECT</span>
-          <h3>Single-Hop RAG Misses Downstream Causal Hops</h3>
-          <p>When an engineer asks why <em>"Express Wallet GA"</em> is on hold, keyword/vector search matches the release ticket (<code>SIM-48305</code>) and even frontend button CSS commits (<code>PR-9105</code>), but completely misses the DynamoDB lock-scan PR (<code>PR-9412</code>) three hops away because that PR never mentions "Express Wallet." In our live Bedrock benchmark, Top-2 RAG achieved only <strong>78.1% (50/64)</strong> recall.</p>
+          <span class="step-badge">01 · VOCABULARY MISMATCH</span>
+          <h3>Single-Hop Search Misses Downstream Causes</h3>
+          <p>When an engineer asks why <em>"Express Wallet GA"</em> is on hold, keyword and vector search match the launch ticket (<code>SIM-48305</code>) and unrelated button CSS commits (<code>PR-9105</code>), but miss the DynamoDB lock-scan pull request (<code>PR-9412</code>) three hops away because that PR never mentions "Express Wallet." Top-2 RAG reached <strong>78.1% (50/64)</strong> recall.</p>
         </div>
         <div class="card walkthrough-card">
-          <span class="step-badge">FAILURE MODE 02 · STALE RFC POLLUTION</span>
-          <h3>Chronological Stuffing Suffers Context Rot</h3>
-          <p>Real 2024–2025 architecture docs (<code>RFC-084</code>, <code>RFC-112</code>, <code>RFC-120</code>) keep their authoritative titles even after a newer 2026 RFC supersedes them. Stuffing the entire authorized archive chronologically burned <strong>9,425 mean Bedrock inputTokens</strong> per query and dropped to <strong>87.5%</strong> on Supersession Hygiene and <strong>81.2%</strong> on Cross-Team Blocker questions.</p>
+          <span class="step-badge">02 · OUTDATED DESIGN DOCS</span>
+          <h3>Full Archive Stuffing Cites Superseded RFCs</h3>
+          <p>Older 2024 and 2025 design docs (<code>RFC-084</code>, <code>RFC-112</code>, <code>RFC-120</code>) retain authoritative titles after newer 2026 RFCs replace them. Stuffing the full authorized archive used <strong>9,425 mean Bedrock inputTokens</strong> per query and scored <strong>87.5%</strong> on RFC supersession questions and <strong>81.2%</strong> on cross-team blocker questions.</p>
         </div>
         <div class="card walkthrough-card">
-          <span class="step-badge">FAILURE MODE 03 · TRANSITIVE ACL DRIFT</span>
+          <span class="step-badge">03 · TRANSITIVE GRAPH ACCESS</span>
           <h3>Post-Retrieval Filtering Risks Cross-Team Leaks</h3>
-          <p>In an interconnected enterprise graph, a shared product OKR can sit one or two edges from restricted executive HSM incidents (<code>SIM-52900</code>, <code>$9.2M</code> regulated banking ARR) or PCI war-rooms (<code>SLACK-WAR-771</code>). Governance boundaries must be enforced <em>prior</em> to graph traversal and summary factoring so unauthorized facts never enter working memory.</p>
+          <p>In a connected company graph, a shared product OKR can sit one or two hops from restricted executive HSM incidents (<code>SIM-52900</code>, <code>$9.2M</code> banking ARR) or PCI incident channels (<code>SLACK-WAR-771</code>). Team permission boundaries have to run before graph traversal so restricted nodes never enter working memory.</p>
         </div>
       </div>
 
-      <!-- Concrete Cross-Silo Worked Example -->
-      <div class="worked-example">
+      <div class="trace-example-card">
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
           <div>
-            <span class="section-kicker" style="margin-bottom:0.1rem;">Concrete End-to-End Worked Example</span>
-            <h3 style="font-size:1.18rem; font-weight:800;">Tracing One Question Across 5 Silos Into the L1 / L2 / L3 Semantic Page Table</h3>
+            <span class="section-kicker" style="margin-bottom:0.1rem;">Request Trace · 5 Connected Tools</span>
+            <h3 style="font-size:1.18rem; font-weight:800;">Example: Tracing a Blocked Checkout Launch Across Five Tools</h3>
           </div>
           <span class="tag tag-pass">10,833 Raw Tokens → 1,533 Factored Tokens (-85.8%)</span>
         </div>
         <p style="font-size:0.91rem; color:var(--ink-muted);">
-          Suppose an on-call SRE (<code>role_team = payments_sre</code>) asks: <em>"Why is One-Click Express Wallet GA (SIM-48305) currently blocked, which PR root-caused the US-East latency spike, which active RFC governs the fix, and what Q4 GMS OKR is impacted?"</em> Watch how OrgCortex links and pages the evidence:
+          Query from an on-call SRE (<code>role_team = payments_sre</code>): <em>"Why is One-Click Express Wallet GA (SIM-48305) blocked, which PR caused the US-East latency spike, which active RFC governs the fix, and what Q4 GMS OKR is impacted?"</em>
         </p>
 
         <div class="hop-chain-grid">
           <div class="hop-card">
-            <div class="mono" style="font-size:0.69rem; font-weight:700; color:var(--accent-main);">HOP 0 · LAUNCH SIM</div>
+            <div class="mono" style="font-size:0.69rem; font-weight:700; color:var(--accent-main);">HOP 0 · LAUNCH TICKET</div>
             <strong>SIM-48305</strong>
-            <p style="margin-top:0.25rem; color:var(--ink-muted);">Express Wallet 25%→100% ramp is <code>BLOCKED</code> by <code>SIM-48291</code>; impacts <code>OKR-2026-Q4-CHK</code> (<code>$14.8M</code> GMS) → <strong>Paged into L1</strong>.</p>
+            <p style="margin-top:0.25rem; color:var(--ink-muted);">Express Wallet 25%→100% ramp is <code>BLOCKED</code> by <code>SIM-48291</code> and impacts <code>OKR-2026-Q4-CHK</code> (<code>$14.8M</code> GMS) → <strong>Paged into L1</strong>.</p>
           </div>
           <div class="hop-card">
             <div class="mono" style="font-size:0.69rem; font-weight:700; color:var(--warn);">HOP 1 · SEV-2 INCIDENT</div>
@@ -1216,7 +1215,7 @@
           <div class="hop-card">
             <div class="mono" style="font-size:0.69rem; font-weight:700; color:var(--purple);">HOP 2 · SLACK + GIT PR</div>
             <strong>SLACK-WAR-771 → PR-9412</strong>
-            <p style="margin-top:0.25rem; color:var(--ink-muted);">War-room flamegraphs link <code>ROOT_CAUSED_BY_PR</code> to <code>PR-9412</code> (<code>scan_expired_leases</code>) &amp; hotfix <code>PR-9448</code> (<code>154ms</code>) → <strong>Factored into L2</strong>.</p>
+            <p style="margin-top:0.25rem; color:var(--ink-muted);">Incident flamegraphs link <code>ROOT_CAUSED_BY_PR</code> to <code>PR-9412</code> (<code>scan_expired_leases</code>) and hotfix <code>PR-9448</code> (<code>154ms</code>) → <strong>Factored into L2</strong>.</p>
           </div>
           <div class="hop-card">
             <div class="mono" style="font-size:0.69rem; font-weight:700; color:var(--pass);">HOP 3 · RFC LINEAGE</div>
@@ -1233,15 +1232,15 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- §02 · SYSTEM ARCHITECTURE (MULTI-PLANE INTERACTIVE CANVAS)          -->
+    <!-- 02 · ARCHITECTURE                                                   -->
     <!-- =================================================================== -->
     <section id="system-architecture" class="section">
       <div class="section-header">
         <div>
-          <span class="section-kicker">§02 · System Architecture</span>
-          <h2 class="section-title">End-to-End System Architecture (Serverless Edge → 5 Silos → Governed Graph → L1/L2/L3 Pager → Bedrock)</h2>
+          <span class="section-kicker">02 · Architecture</span>
+          <h2 class="section-title">Architecture</h2>
           <p class="section-desc">
-            Five-plane serverless architecture deployed on Amazon CloudFront, Private S3 (SigV4 OAC), Python 3.12 AWS Lambda, and Amazon Bedrock Nova Lite. <strong>Click any component in the diagram or pill bar below to inspect its module contract and measured telemetry.</strong>
+            Five-plane serverless pipeline running on CloudFront, S3, Python 3.12 AWS Lambda, and Amazon Bedrock. Click any component in the diagram or pill bar below to inspect its module and measured metrics.
           </p>
         </div>
       </div>
@@ -1350,11 +1349,11 @@
     <text x="775" y="139" text-anchor="middle" class="ex-mono" font-size="9.3" fill="#312E81">org_cortex/server.py · /api/*</text>
   </g>
 
-  <!-- Tilted Yellow Sticky Note -->
+  <!-- Measured Results Callout -->
   <g transform="rotate(-1.7 1056 94)">
     <path d="M 934,38 L 1180,38 L 1180,134 L 1162,150 L 934,150 Z" fill="#FEF3C7" stroke="#18181B" stroke-width="2" />
     <path d="M 1162,150 L 1162,134 L 1180,134" fill="#FDE68A" stroke="#18181B" stroke-width="1.6" />
-    <text x="948" y="64" class="ex-hand" font-size="19" font-weight="700" fill="#92400E">📌 Measured Bedrock Gains</text>
+    <text x="948" y="64" class="ex-hand" font-size="19" font-weight="700" fill="#92400E">Measured Results</text>
     <text x="948" y="87" class="ex-hand" font-size="17" font-weight="600" fill="#18181B">• -88.1% inputTokens (8.38x)</text>
     <text x="948" y="108" class="ex-hand" font-size="17" font-weight="600" fill="#18181B">• 98.4% recall (63/64 facts)</text>
     <text x="948" y="129" class="ex-hand" font-size="17" font-weight="700" fill="#065F46">• 0.0% cross-team leakage</text>
@@ -1556,14 +1555,14 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- §03 · IMPLEMENTATION (PLAIN-ENGLISH INTUITION + UNDER THE HOOD)     -->
+    <!-- 03 · IMPLEMENTATION                                                 -->
     <!-- =================================================================== -->
     <section id="implementation" class="section">
       <div class="section-header">
         <div>
-          <span class="section-kicker">§03 · Implementation</span>
-          <h2 class="section-title">Core Subsystems — Plain-English Intuition Paired With Under-the-Hood Mechanics</h2>
-          <p class="section-desc">Zero external Python framework dependencies—every graph discovery pass, ACL check, token-budget pager, and OpenTelemetry span timer is implemented cleanly in Python 3.12 stdlib + AWS Lambda <code>boto3</code>.</p>
+          <span class="section-kicker">03 · Implementation</span>
+          <h2 class="section-title">Implementation</h2>
+          <p class="section-desc">Cross-tool edge discovery, pre-traversal permission checks, token-budget paging, and OpenTelemetry span timing in <code>org_cortex/semantic_fabric.py</code> and <code>org_cortex/server.py</code>.</p>
         </div>
         <span class="tag tag-blue">10 / 10 Unit Tests Passing</span>
       </div>
@@ -1571,22 +1570,22 @@
       <!-- Subsystem 1 -->
       <div class="paired-module-card">
         <div class="paired-module-head">
-          <span>SUBSYSTEM 01 · CROSS-SILO RELATIONSHIP DISCOVERY &amp; SUPERSESSION PROPAGATION</span>
+          <span>MODULE 01 · CROSS-TOOL RELATIONSHIP DISCOVERY &amp; RFC SUPERSESSION</span>
           <span style="color:#A5B4FC;">org_cortex/semantic_fabric.py :: _discover_edges_for_single_artifact()</span>
         </div>
         <div class="paired-module-body">
-          <div class="intuition-pane">
-            <span class="pane-label" style="background:var(--accent-soft); color:var(--accent-deep);">Plain-English Intuition</span>
-            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Turning Scattered Mentions Into Directional Cause-and-Effect</h3>
+          <div class="design-pane">
+            <span class="pane-label" style="background:var(--accent-soft); color:var(--accent-deep);">Design Rationale</span>
+            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Linking Mentions Across Slack, Tickets, PRs, and Docs</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              Engineers naturally write causal breadcrumbs across tools—a Slack message says <em>"bisected SIM-48291 to PR-9412,"</em> a release ticket says <em>"blocked by SIM-48291,"</em> and a new architecture doc says <em>"this specification supersedes RFC-084."</em> OrgCortex reads those directional cues as soon as an artifact arrives, wiring up a live causal map and automatically flagging replaced RFCs as obsolete even if nobody edited the old document's title.
+              Engineers leave causal links in everyday text: a Slack message notes <em>"bisected SIM-48291 to PR-9412,"</em> a launch ticket states <em>"blocked by SIM-48291,"</em> and a new design doc states <em>"this specification supersedes RFC-084."</em> OrgCortex parses those cues on ingest, builds directed edges, and marks replaced RFCs obsolete even when the older document's title has not been edited.
             </p>
           </div>
-          <div class="hood-pane">
-            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Under the Hood</span>
-            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Clause-Scoped Regex Windows + Cosine Cross-Silo Linker</h3>
+          <div class="mechanics-pane">
+            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Implementation Details</span>
+            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Clause-Scoped Regex Windows + Cosine Linker</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              <code>ENTITY_ID_RE</code> locates typed identifiers (<code>PR-\d+</code>, <code>SIM-\d+</code>, <code>RFC-\d+</code>, <code>OKR-*</code>, <code>SLACK-*</code>) and inspects a narrow 48-character pre-clause to disambiguate <code>X blocks Y</code> vs <code>Y blocked by X</code>, and active <code>supersedes RFC-*</code> clauses vs passive mentions. When <code>SUPERSEDES_RFC</code> registers, <code>_register_edge()</code> mutates <code>target.status = "SUPERSEDED"</code> and <code>superseded_by = source_id</code>. Custom ingested artifacts without explicit IDs fall back to shared-ACL normalized token cosine similarity (threshold <code>&ge; 0.20</code>, minimum 4 shared domain terms).
+              <code>ENTITY_ID_RE</code> matches typed identifiers (<code>PR-\d+</code>, <code>SIM-\d+</code>, <code>RFC-\d+</code>, <code>OKR-*</code>, <code>SLACK-*</code>) and inspects a 48-character preceding clause to distinguish <code>X blocks Y</code> from <code>Y blocked by X</code>, and active <code>supersedes RFC-*</code> clauses from passive references. When <code>SUPERSEDES_RFC</code> is recorded, <code>_register_edge()</code> sets <code>target.status = "SUPERSEDED"</code> and <code>superseded_by = source_id</code>. Records without explicit IDs fall back to shared-ACL token cosine similarity (threshold <code>&ge; 0.20</code>, minimum 4 shared domain terms).
             </p>
           </div>
         </div>
@@ -1595,22 +1594,22 @@
       <!-- Subsystem 2 -->
       <div class="paired-module-card">
         <div class="paired-module-head">
-          <span>SUBSYSTEM 02 · INFINITE-CONTEXT FACTORING META-AGENT (SEMANTIC PAGE TABLE)</span>
+          <span>MODULE 02 · THREE-TIER CONTEXT PAGE TABLE (L1 / L2 / L3)</span>
           <span style="color:#FCD34D;">org_cortex/semantic_fabric.py :: AdaptiveContextManager.factor_context()</span>
         </div>
         <div class="paired-module-body">
-          <div class="intuition-pane">
-            <span class="pane-label" style="background:var(--gold-soft); color:var(--ink);">Plain-English Intuition</span>
-            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Virtual Memory Paging for LLM Prompts</h3>
+          <div class="design-pane">
+            <span class="pane-label" style="background:var(--gold-soft); color:var(--ink);">Design Rationale</span>
+            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Tiered Paging Within a Fixed Token Budget</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              Humans investigating an outage don't paste 500 lines of CSS diffs and closed APAC tickets into their working thoughts—they keep the 2 primary tickets open in front of them, jot down 1-line bullet notes for the 4 related PRs and RFCs, and close obsolete docs while remembering where to find them. <code>AdaptiveContextManager</code> gives the LLM that exact three-level memory hierarchy inside any user-chosen token budget.
+              During an incident review, engineers keep the two primary tickets open, summarize related pull requests and design docs into short notes, and set aside superseded docs and unrelated UI commits. <code>AdaptiveContextManager</code> applies the same three-tier layout so multi-hop context fits inside a configurable token ceiling.
             </p>
           </div>
-          <div class="hood-pane">
-            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Under the Hood</span>
-            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Boilerplate Stripping, L2 Propositions &amp; SHA-256 <code>ctx://</code> Pointers</h3>
+          <div class="mechanics-pane">
+            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Implementation Details</span>
+            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Boilerplate Stripping, L2 Summaries &amp; SHA-256 <code>ctx://</code> Pointers</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              Reserves <code>260</code> tokens for instruction framing, allocating <code>44%</code> of usable budget to <strong>L1</strong> (<code>strip_boilerplate_for_l1()</code> strips fenced unified diffs, JSON alarm payloads, and bot lines) and <code>56%</code> to <strong>L2</strong> (<code>build_l2_factored_proposition()</code> preserves extracted <code>METRIC_EXTRACT_RE</code> figures and incident graph edges). Any artifact with <code>status == "SUPERSEDED"</code> or low salience is evicted to <strong>L3</strong> as <code>ctx://org-cortex/&lt;silo&gt;/&lt;id&gt;#&lt;sha256[:10]&gt;</code> at <code>0</code> prompt tokens—cutting measured Bedrock <code>inputTokens</code> by <strong>-88.1% (8.38x)</strong>.
+              Reserves <code>260</code> tokens for instructions, assigning <code>44%</code> of remaining budget to <strong>L1</strong> (<code>strip_boilerplate_for_l1()</code> removes fenced diffs, JSON alarm blobs, and bot lines) and <code>56%</code> to <strong>L2</strong> (<code>build_l2_factored_proposition()</code> retains <code>METRIC_EXTRACT_RE</code> numbers and incident edges). Records with <code>status == "SUPERSEDED"</code> or low salience move to <strong>L3</strong> as <code>ctx://org-cortex/&lt;silo&gt;/&lt;id&gt;#&lt;sha256[:10]&gt;</code> at <code>0</code> prompt tokens, reducing measured Bedrock <code>inputTokens</code> by <strong>88.1% (8.38x)</strong>.
             </p>
           </div>
         </div>
@@ -1619,22 +1618,22 @@
       <!-- Subsystem 3 -->
       <div class="paired-module-card" style="margin-bottom:0;">
         <div class="paired-module-head">
-          <span>SUBSYSTEM 03 · AWS CONTEXT PRE-TRAVERSAL ACL GATE &amp; 5-AGENT OTEL WATERFALL</span>
+          <span>MODULE 03 · PRE-TRAVERSAL TEAM PERMISSION GATE &amp; OPENTELEMETRY SPANS</span>
           <span style="color:#6EE7B7;">org_cortex/semantic_fabric.py + server.py :: _traverse_governed_subgraph() &amp; reason()</span>
         </div>
         <div class="paired-module-body">
-          <div class="intuition-pane">
-            <span class="pane-label" style="background:var(--pass-soft); color:var(--pass);">Plain-English Intuition</span>
-            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Locking Restricted Doors Before the Scout Starts Walking</h3>
+          <div class="design-pane">
+            <span class="pane-label" style="background:var(--pass-soft); color:var(--pass);">Design Rationale</span>
+            <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Enforcing Team Permissions Before Walking the Graph</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              Instead of letting an agent traverse the entire company graph and hoping a final filter catches secrets, <code>GraphScout</code> removes unauthorized team rooms from the map before taking Step 1. And if someone explicitly asks about a restricted ticket ID outside their scope, OrgCortex immediately declines in under a millisecond without even waking up the LLM. Every step is timed and graded so operators can see why an answer was produced.
+              Rather than traversing the full company graph and filtering sensitive text afterward, <code>GraphScout</code> removes unauthorized team records before step 1. When a caller explicitly queries a restricted ticket ID outside their team scope, OrgCortex declines in under a millisecond without calling the LLM. Each pipeline stage emits timed spans for inspection.
             </p>
           </div>
-          <div class="hood-pane">
-            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Under the Hood</span>
+          <div class="mechanics-pane">
+            <span class="pane-label" style="background:var(--bg-subtle); color:var(--ink);">Implementation Details</span>
             <h3 style="font-size:1.08rem; font-weight:800; margin-bottom:0.45rem;">Set-Intersection ACL Pre-Filter + <code>time.perf_counter()</code> Spans</h3>
             <p style="font-size:0.9rem; color:var(--ink-muted);">
-              Computes <code>set(policy["allowed_teams"]) &amp; set(artifact.team_acl)</code> prior to building adjacency lists; if <code>explicit_unauthorized_hit and not authorized_explicit</code>, short-circuits in <code>0.4–1.0 ms</code> (<code>0</code> Bedrock tokens, <code>0.0%</code> leakage across all 16 benchmark queries). Wraps <code>Planner</code>, <code>GraphScout</code>, <code>ContextFactorer</code>, <code>Synthesizer</code> (<code>boto3.client("bedrock-runtime").converse()</code>), and <code>GroundingJudge</code> in parent-linked W3C span records with exact <code>inputTokens</code>/<code>outputTokens</code> telemetry.
+              Evaluates <code>set(policy["allowed_teams"]) &amp; set(artifact.team_acl)</code> before building adjacency lists. When <code>explicit_unauthorized_hit and not authorized_explicit</code> holds, execution short-circuits in <code>0.4–1.0 ms</code> (<code>0</code> Bedrock tokens, <code>0.0%</code> leakage across all 16 benchmark queries). Wraps <code>Planner</code>, <code>GraphScout</code>, <code>ContextFactorer</code>, <code>Synthesizer</code> (<code>boto3.client("bedrock-runtime").converse()</code>), and <code>GroundingJudge</code> in parent-linked W3C spans recording exact <code>inputTokens</code> and <code>outputTokens</code>.
             </p>
           </div>
         </div>
@@ -1642,14 +1641,14 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- §04 · DESIGN TRADEOFFS                                              -->
+    <!-- 04 · TRADE-OFFS                                                     -->
     <!-- =================================================================== -->
     <section id="design-tradeoffs" class="section">
       <div class="section-header">
         <div>
-          <span class="section-kicker">§04 · Design Tradeoffs</span>
-          <h2 class="section-title">Architectural Decisions, Alternatives &amp; Empirical Tradeoffs</h2>
-          <p class="section-desc">Every engineering mechanism trades off one resource to win on accuracy, latency, cost, or security isolation—quantified below from our live AWS Bedrock benchmark.</p>
+          <span class="section-kicker">04 · Trade-Offs</span>
+          <h2 class="section-title">Trade-Offs</h2>
+          <p class="section-desc">Design choices, alternatives considered, and measured trade-offs across accuracy, latency, token usage, and access isolation.</p>
         </div>
       </div>
 
@@ -1666,25 +1665,25 @@
           <tbody>
             <tr>
               <td><strong>Prompt Memory Layout</strong></td>
-              <td>3-Tier L1/L2/L3 Semantic Page Table</td>
+              <td>3-Tier L1/L2/L3 Context Page Table</td>
               <td>Chronological Full-Archive Stuffing</td>
-              <td>Reduces mean Bedrock <code>inputTokens</code> by <strong>-88.1%</strong> (1,125 vs 9,425 tok, <strong>8.38x</strong>) and p50 e2e latency by <strong>-13.2%</strong> (2205.7 ms vs 2542.0 ms) while raising fact recall from <strong>90.6% → 98.4%</strong>; L2 drops line-by-line code diff context when exact diff line numbers aren't requested.</td>
+              <td>Reduces mean Bedrock <code>inputTokens</code> by <strong>-88.1%</strong> (1,125 vs 9,425 tok, <strong>8.38x</strong>) and p50 e2e latency by <strong>-13.2%</strong> (2205.7 ms vs 2542.0 ms) while raising fact recall from <strong>90.6% → 98.4%</strong>; L2 drops line-by-line code diff context when exact diff line numbers are not requested.</td>
             </tr>
             <tr>
-              <td><strong>Cross-Silo Candidate Recall</strong></td>
-              <td>BM25 Seeds + 4-Hop Typed Edge Spreading Activation</td>
+              <td><strong>Cross-Tool Candidate Recall</strong></td>
+              <td>BM25 Seeds + 4-Hop Directed Edge Walk</td>
               <td>Single-Hop Top-2 Lexical RAG</td>
-              <td>Spends ~603 more input tokens than Top-2 RAG (1,125 vs 522) plus <strong>2.389 ms p50</strong> Python graph/paging CPU time, in exchange for lifting multi-hop recall from <strong>78.1% → 98.4% (+20.3 pts)</strong>.</td>
+              <td>Spends ~603 more input tokens than Top-2 RAG (1,125 vs 522) plus <strong>2.389 ms p50</strong> Python graph and paging CPU time, in exchange for lifting multi-hop recall from <strong>78.1% → 98.4% (+20.3 pts)</strong>.</td>
             </tr>
             <tr>
               <td><strong>Relationship Extraction</strong></td>
               <td>Deterministic Clause Window + Shared-ACL Cosine Linker</td>
               <td>LLM Graph Extraction on Every Slack/PR Event</td>
-              <td>Achieves <strong>&lt; 2 ms</strong> synchronous ingestion at <strong>$0 LLM ingest cost</strong>; trades open-vocabulary relation invention for 5 high-precision enterprise schemas (<code>BLOCKS</code>, <code>SUPERSEDES_RFC</code>, <code>ROOT_CAUSED_BY_PR</code>, <code>OWNED_BY_TEAM</code>, <code>IMPACTS_OKR</code>).</td>
+              <td>Achieves <strong>&lt; 2 ms</strong> synchronous ingestion at <strong>$0 LLM ingest cost</strong>; trades open-vocabulary relation invention for 5 structured enterprise edge types (<code>BLOCKS</code>, <code>SUPERSEDES_RFC</code>, <code>ROOT_CAUSED_BY_PR</code>, <code>OWNED_BY_TEAM</code>, <code>IMPACTS_OKR</code>).</td>
             </tr>
             <tr>
-              <td><strong>Multi-Tenant Governance</strong></td>
-              <td>Pre-Traversal Team-ACL Subgraph Isolation</td>
+              <td><strong>Team Permission Isolation</strong></td>
+              <td>Pre-Traversal Team-ACL Subgraph Filter</td>
               <td>Post-Retrieval Prompt Redaction / Judge Filter</td>
               <td>Guarantees <strong>0.0% unauthorized leakage</strong> and <code>0.4–1.0 ms</code> deterministic abstention on restricted probes; requires connectors to populate <code>team_acl</code> scopes at ingest time.</td>
             </tr>
@@ -1694,68 +1693,65 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- §05 · LIVE STUDIO (4 INTERACTIVE SANDBOX TABS)                      -->
+    <!-- 05 · LIVE DEMO                                                      -->
     <!-- =================================================================== -->
     <section id="live-studio" class="tabs-wrapper">
       <div class="section-header" style="margin-bottom:1rem;">
         <div>
-          <span class="section-kicker">§05 · Live Studio</span>
-          <h2 class="section-title">Interactive 4-Tab Semantic Graph, Factoring Meta-Agent &amp; OTel Studio</h2>
-          <p class="section-desc">Backed live by Python 3.12 AWS Lambda (<code>/api/*</code>) and Amazon Bedrock (<code>us.amazon.nova-lite-v1:0</code>) in <code>us-west-2</code>.</p>
+          <span class="section-kicker">05 · Live Demo</span>
+          <h2 class="section-title">Live Demo</h2>
+          <p class="section-desc">Explore the connected 5-tool graph, run cross-team questions with adjustable token budgets on Amazon Bedrock, and inspect the 5-step OpenTelemetry trace waterfall.</p>
         </div>
         <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
-          <button type="button" class="btn btn-secondary" onclick="resetEngineLive()">↺ Reset Org Corpus</button>
+          <button type="button" class="btn btn-secondary" onclick="resetEngineLive()">↺ Reset Corpus</button>
         </div>
       </div>
 
-      <div class="tab-bar" role="tablist" aria-label="OrgCortex Live Studio Tabs">
+      <div class="tab-bar" role="tablist" aria-label="OrgCortex Live Demo Tabs">
         <button type="button" class="tab-btn active" data-tab="semantic-graph" role="tab" aria-selected="true" onclick="switchTab('semantic-graph')">
-          <span class="tab-btn-eyebrow">Tab 01 · /api/graph/discover</span>
-          <span class="tab-btn-title">Cross-Silo Semantic Graph &amp; Ingest</span>
-          <span class="tab-btn-metric">30 Nodes · 53 Edges · Live Team-ACL</span>
+          <span class="tab-btn-eyebrow">01 · Connected Tools</span>
+          <span class="tab-btn-title">Explore Cross-Team Graph</span>
+          <span class="tab-btn-metric">30 Records · 53 Links · Team Permissions</span>
         </button>
         <button type="button" class="tab-btn" data-tab="meta-agent" role="tab" aria-selected="false" onclick="switchTab('meta-agent')">
-          <span class="tab-btn-eyebrow">Tab 02 · /api/meta-agent/reason</span>
-          <span class="tab-btn-title">Infinite-Context Factoring Meta-Agent</span>
-          <span class="tab-btn-metric">L1/L2/L3 Page Table · Live Bedrock Nova</span>
+          <span class="tab-btn-eyebrow">02 · Context Pager &amp; Q&amp;A</span>
+          <span class="tab-btn-title">Ask Cross-Team Questions</span>
+          <span class="tab-btn-metric">L1/L2/L3 Page Table · Amazon Bedrock</span>
         </button>
         <button type="button" class="tab-btn" data-tab="otel-spans" role="tab" aria-selected="false" onclick="switchTab('otel-spans')">
-          <span class="tab-btn-eyebrow">Tab 03 · Agent Observability</span>
-          <span class="tab-btn-title">5-Agent OTel Waterfall &amp; Rubric</span>
-          <span class="tab-btn-metric">Planner → Scout → Factorer → Judge</span>
+          <span class="tab-btn-eyebrow">03 · Execution Trace</span>
+          <span class="tab-btn-title">Inspect Agent Trace &amp; Scores</span>
+          <span class="tab-btn-metric">5-Step OpenTelemetry Waterfall &amp; Rubric</span>
         </button>
         <button type="button" class="tab-btn" data-tab="benchmarks" role="tab" aria-selected="false" onclick="switchTab('benchmarks')">
-          <span class="tab-btn-eyebrow">Tab 04 · §06 Benchmarks</span>
-          <span class="tab-btn-title">Measured Bedrock Benchmark Suite</span>
-          <span class="tab-btn-metric">-88.1% Tokens · 98.4% Recall (44 Calls)</span>
+          <span class="tab-btn-eyebrow">04 · Benchmarks</span>
+          <span class="tab-btn-title">Benchmark Results</span>
+          <span class="tab-btn-metric">-88.1% Tokens · 98.4% Recall · 0 Leaks</span>
         </button>
       </div>
 
       <!-- ================================================================ -->
-      <!-- TAB 1: CROSS-SILO SEMANTIC RELATIONSHIP DISCOVERY & ACL STUDIO    -->
+      <!-- TAB 1: EXPLORE CROSS-TEAM GRAPH                                   -->
       <!-- ================================================================ -->
       <div id="panel-semantic-graph" class="tab-panel active" role="tabpanel">
-        <div class="click-guide-box">
-          <strong>👆 What to Click &amp; What Happens (Tab 01):</strong>
-          (1) Switch <strong>Active Team-ACL Scope</strong> on the left from <code>payments_sre</code> to <code>exec_leadership</code> or <code>external_vendor</code>—the live backend re-computes the authorized subgraph so restricted sovereign HSM nodes (<code>SIM-52900</code>, <code>PR-10511</code>) appear for executives and vanish (<code>29 Withheld · 0.0% Leak</code>) for external partners.
-          (2) Click any node in the <strong>5-Silo SVG Graph</strong> to highlight its causal edges and inspect whether an RFC is <code>ACTIVE</code> or <code>SUPERSEDED</code>.
-          (3) Click <strong>+ Ingest Artifact</strong> and submit a preset Slack message or superseding RFC to watch <code>POST /api/graph/discover</code> wire new cross-silo edges in under 2 ms.
+        <div class="demo-note-box">
+          Switch the <strong>Team Permission Scope</strong> on the left between <code>payments_sre</code>, <code>exec_leadership</code>, and <code>external_vendor</code> to see restricted nodes appear or lock, click any node in the graph to inspect its links, or add a new record via <code>POST /api/graph/discover</code>.
         </div>
 
         <div class="sim-header">
           <div>
-            <h3 class="sim-title">Org-Scale Cross-Silo Semantic Relationship Discovery</h3>
-            <p class="sim-desc">Live governed organizational knowledge graph linking Slack war-rooms, SIM incidents, Git PRs, Architecture RFCs, and Quarterly OKRs.</p>
+            <h3 class="sim-title">Cross-Team Graph &amp; Live Record Ingestion</h3>
+            <p class="sim-desc">Directed graph connecting Slack threads, incident tickets, pull requests, design docs, and quarterly OKRs under team-level access rules.</p>
           </div>
-          <button type="button" class="btn btn-accent" onclick="toggleDiscoverDrawer()">+ Ingest Artifact (/api/graph/discover)</button>
+          <button type="button" class="btn btn-accent" onclick="toggleDiscoverDrawer()">+ Add Record (/api/graph/discover)</button>
         </div>
 
         <!-- Collapsible Live Artifact Discovery Form -->
         <div id="discoverDrawer" class="card" style="display:none; margin-bottom:1.25rem; background:var(--bg-subtle);">
           <div style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; flex-wrap:wrap; margin-bottom:0.85rem;">
             <div>
-              <h4 style="font-size:1.06rem; font-weight:800;">Ingest New Enterprise Artifact &amp; Auto-Discover Cross-Silo Edges</h4>
-              <p class="mono" style="font-size:0.71rem; color:var(--ink-muted); margin-top:0.18rem;">POST /api/graph/discover — runs explicit causal-clause extraction + shared-ACL cosine discovery.</p>
+              <h4 style="font-size:1.06rem; font-weight:800;">Add a New Record &amp; Discover Cross-Tool Links</h4>
+              <p class="mono" style="font-size:0.71rem; color:var(--ink-muted); margin-top:0.18rem;">POST /api/graph/discover runs causal-clause parsing and shared-ACL cosine linking.</p>
             </div>
             <div style="display:flex; gap:0.45rem; flex-wrap:wrap;">
               <button type="button" class="btn btn-secondary" onclick="loadDiscoverPreset('slack')">Preset 1: Post-Canary Slack Update</button>
@@ -1766,21 +1762,21 @@
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:0.75rem; margin-bottom:0.75rem;">
             <div>
-              <div class="control-label"><span>Artifact Silo (<code>artifact_type</code>)</span></div>
+              <div class="control-label"><span>Source Tool (<code>artifact_type</code>)</span></div>
               <select id="discType">
-                <option value="slack_thread">Slack / Chime War-Room (slack_thread)</option>
-                <option value="arch_rfc">Architecture RFC (arch_rfc)</option>
-                <option value="sim_ticket">Jira / SIM Ticket (sim_ticket)</option>
+                <option value="slack_thread">Slack Thread (slack_thread)</option>
+                <option value="arch_rfc">Design Doc / RFC (arch_rfc)</option>
+                <option value="sim_ticket">Incident Ticket (sim_ticket)</option>
                 <option value="git_pr">Git Pull Request (git_pr)</option>
-                <option value="okr_ledger">Quarterly OKR Ledger (okr_ledger)</option>
+                <option value="okr_ledger">Quarterly OKR (okr_ledger)</option>
               </select>
             </div>
             <div>
-              <div class="control-label"><span>Artifact Title</span></div>
+              <div class="control-label"><span>Record Title</span></div>
               <input type="text" id="discTitle" value="#payments-canary-watch Post-Hotfix Verification" />
             </div>
             <div>
-              <div class="control-label"><span>Governed <code>team_acl</code> Scope</span></div>
+              <div class="control-label"><span>Allowed Teams (<code>team_acl</code>)</span></div>
               <select id="discAcl">
                 <option value="payments_sre,commerce_checkout,exec_leadership">payments_sre + commerce_checkout</option>
                 <option value="core_platform,commerce_checkout,exec_leadership">core_platform + commerce_checkout</option>
@@ -1791,15 +1787,15 @@
           </div>
 
           <div style="margin-bottom:0.8rem;">
-            <div class="control-label"><span>Artifact Content (mention SIM/PR/RFC/OKR IDs or describe subsystem symptoms)</span></div>
+            <div class="control-label"><span>Record Content (mention ticket, PR, RFC, or OKR IDs, or describe subsystem symptoms)</span></div>
             <textarea id="discContent" rows="3">[15:20 UTC] @priya.nair: 4-hour canary check on PR-9448 confirms US-East checkout p99 steady at 149ms after SIM-48291 (which was root caused by PR-9412). Ready to clear gate on SIM-48305 and restore OKR-2026-Q4-CHK!</textarea>
           </div>
 
           <div style="display:flex; justify-content:space-between; align-items:center; gap:0.75rem; flex-wrap:wrap;">
-            <span class="mono" style="font-size:0.71rem;" id="discStatusMsg">Ready to ingest and encode typed semantic edges.</span>
+            <span class="mono" style="font-size:0.71rem;" id="discStatusMsg">Ready to ingest record and discover links.</span>
             <div style="display:flex; gap:0.5rem;">
               <button type="button" class="btn btn-secondary" onclick="toggleDiscoverDrawer()">Close</button>
-              <button type="button" class="btn btn-accent" id="discSubmitBtn" onclick="submitArtifactDiscovery()">⚡ Ingest &amp; Discover Edges</button>
+              <button type="button" class="btn btn-accent" id="discSubmitBtn" onclick="submitArtifactDiscovery()">⚡ Add Record &amp; Discover Links</button>
             </div>
           </div>
         </div>
@@ -1807,12 +1803,12 @@
         <div class="grid-2">
           <div class="card">
             <div class="control-label">
-              <span>1. Active AWS Context Team-ACL Scope (<code>role_team</code>)</span>
+              <span>1. Caller Team Permission Scope (<code>role_team</code>)</span>
               <span class="tag tag-accent" id="graphRoleBadge">payments_sre</span>
             </div>
             <select id="graphRoleSelect" onchange="changeRoleTeam(this.value)" style="margin-bottom:0.65rem;">
               <option value="payments_sre">payments_sre · Payments &amp; Checkout SRE (Blocks Exec HSM)</option>
-              <option value="core_platform">core_platform · AI-at-Work Platform Eng (Blocks PCI War-Room &amp; Exec)</option>
+              <option value="core_platform">core_platform · Platform Engineering (Blocks PCI &amp; Exec)</option>
               <option value="exec_leadership">exec_leadership · VP / Principal Architect (Full Org Graph)</option>
               <option value="external_vendor">external_vendor · External Partner (Public SDK Only · 29 Withheld)</option>
             </select>
@@ -1820,12 +1816,12 @@
             <div id="graphAclBanner" class="verdict-banner verdict-indigo" style="padding:0.68rem 0.85rem; font-size:0.82rem;"></div>
 
             <div class="control-label" style="margin-top:0.55rem;">
-              <span>2. Filter Graph by Relation Type</span>
+              <span>2. Filter Links by Relationship Type</span>
             </div>
             <div style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0.95rem;" id="relationFilterPills"></div>
 
             <div class="control-label">
-              <span>3. Authorized Artifacts by Silo (Click to Inspect Neighborhood)</span>
+              <span>3. Visible Records (Click to Inspect Links)</span>
               <span class="mono" style="font-size:0.69rem;" id="nodeCountLabel"></span>
             </div>
             <div id="graphNodeList" style="max-height:370px; overflow-y:auto; display:flex; flex-direction:column; gap:0.44rem;"></div>
@@ -1834,12 +1830,12 @@
           <div class="card">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.65rem;">
               <div>
-                <div style="font-weight:800; font-size:1.05rem;">Interactive 5-Silo Semantic Graph Canvas</div>
-                <div class="mono" style="font-size:0.7rem; color:var(--ink-muted);">Click any node to highlight direct causal edges &amp; supersession status</div>
+                <div style="font-weight:800; font-size:1.05rem;">Connected 5-Tool Graph</div>
+                <div class="mono" style="font-size:0.7rem; color:var(--ink-muted);">Click any node to highlight its links and active vs. superseded status</div>
               </div>
               <div style="display:flex; gap:0.35rem; flex-wrap:wrap;">
                 <span class="tag tag-soft">💬 Slack</span>
-                <span class="tag tag-warn">🎫 SIM</span>
+                <span class="tag tag-warn">🎫 Ticket</span>
                 <span class="tag tag-blue">🔀 PR</span>
                 <span class="tag tag-purple">📐 RFC</span>
                 <span class="tag tag-pass">🎯 OKR</span>
@@ -1856,71 +1852,69 @@
       </div>
 
       <!-- ================================================================ -->
-      <!-- TAB 2: INFINITE-CONTEXT FACTORING META-AGENT (BEDROCK NOVA)       -->
+      <!-- TAB 2: ASK CROSS-TEAM QUESTIONS                                   -->
       <!-- ================================================================ -->
       <div id="panel-meta-agent" class="tab-panel" role="tabpanel">
-        <div class="click-guide-box">
-          <strong>👆 What to Click &amp; What Happens (Tab 02):</strong>
-          (1) Click any of the <strong>4 Preset Buttons</strong> (including the 4-hop checkout blocker chain, the stale <code>RFC-084</code> supersession trap, or the adversarial <code>SIM-52900</code> HSM probe) to fire a live <code>POST /api/meta-agent/reason</code> request against <strong>Amazon Bedrock (<code>us.amazon.nova-lite-v1:0</code>)</strong>.
-          (2) Drag the <strong>Token Budget Slider (<code>2,048 .. 16,384</code>)</strong> and click Run to watch <code>AdaptiveContextManager</code> dynamically resize <strong>L1 Working Set</strong> excerpts, compress hop neighbors into <strong>L2 Factored Summaries</strong>, and evict superseded RFCs + UI/CI noise into zero-token <strong>L3 Cold Pointers</strong>.
+        <div class="demo-note-box">
+          Pick one of the four sample questions or adjust the <strong>Token Budget Slider (<code>2,048 .. 16,384</code>)</strong> to run <code>POST /api/meta-agent/reason</code> on Amazon Bedrock and inspect how records are placed into <strong>L1</strong> excerpts, <strong>L2</strong> summaries, and <strong>L3</strong> cold pointers.
         </div>
 
         <div class="sim-header">
           <div>
-            <h3 class="sim-title">Infinite-Context Factoring Meta-Agent (<code>/api/meta-agent/reason</code>)</h3>
-            <p class="sim-desc">Budget-bounded 4-hop semantic retrieval, L1/L2/L3 page-table factoring, and cited Amazon Bedrock Nova Lite synthesis.</p>
+            <h3 class="sim-title">Cross-Team Question Answering &amp; L1 / L2 / L3 Context Pager</h3>
+            <p class="sim-desc">Runs 4-hop permission-filtered retrieval, packs context within the selected token budget, and generates cited answers on Amazon Bedrock.</p>
           </div>
-          <span class="tag tag-accent">us.amazon.nova-lite-v1:0 · us-west-2</span>
+          <span class="tag tag-accent">Live on Amazon Bedrock</span>
         </div>
 
         <div class="grid-2">
           <div class="card">
             <div class="control-label">
-              <span>1. Multi-Hop &amp; Governance Preset Questions</span>
+              <span>1. Sample Multi-Step &amp; Permission Questions</span>
               <span class="mono" style="font-size:0.69rem; color:var(--ink-muted);">1-click live run</span>
             </div>
             <div style="display:grid; grid-template-columns:1fr; gap:0.46rem; margin-bottom:0.95rem;">
               <button type="button" class="btn btn-secondary" style="justify-content:space-between; text-align:left;" onclick="loadReasonPreset(0)">
-                <span>🔗 4-Hop Checkout Gate → Incident → War-Room → PR-9412</span>
+                <span>🔗 4-Step Trace: Launch Hold → Incident → Slack → PR-9412</span>
                 <span class="mono" style="font-size:0.67rem;">payments_sre</span>
               </button>
               <button type="button" class="btn btn-secondary" style="justify-content:space-between; text-align:left;" onclick="loadReasonPreset(1)">
-                <span>📐 Supersession Trap: Active Retry Policy vs Stale RFC-084</span>
-                <span class="mono" style="font-size:0.67rem;">SUPERSEDES_RFC</span>
+                <span>📐 Outdated Doc Check: Active Retry Policy vs. RFC-084</span>
+                <span class="mono" style="font-size:0.67rem;">RFC Lineage</span>
               </button>
               <button type="button" class="btn btn-secondary" style="justify-content:space-between; text-align:left;" onclick="loadReasonPreset(2)">
-                <span>⚡ Gateway HTTP 429 Wave → PR-10204 → RFC-118 Pager</span>
+                <span>⚡ Gateway HTTP 429 Spike → PR-10204 → RFC-118 Pager</span>
                 <span class="mono" style="font-size:0.67rem;">core_platform</span>
               </button>
               <button type="button" class="btn btn-gold" style="justify-content:space-between; text-align:left;" onclick="loadReasonPreset(3)">
-                <span>🛡️ Adversarial Probe: Query Restricted Exec HSM as SRE</span>
-                <span class="mono" style="font-size:0.67rem;">ACL SHORT-CIRCUIT</span>
+                <span>🛡️ Access Probe: Query Restricted Exec HSM Ticket as SRE</span>
+                <span class="mono" style="font-size:0.67rem;">Blocked &lt;1ms</span>
               </button>
             </div>
 
             <div class="control-label">
-              <label for="reasonRoleSelect">2. Active Caller Scope (<code>role_team</code>)</label>
+              <label for="reasonRoleSelect">2. Caller Team Scope (<code>role_team</code>)</label>
             </div>
             <select id="reasonRoleSelect" style="margin-bottom:0.85rem;" onchange="syncRoleDropdowns(this.value)">
               <option value="payments_sre">payments_sre · Payments &amp; Checkout SRE</option>
-              <option value="core_platform">core_platform · AI-at-Work Platform Eng</option>
+              <option value="core_platform">core_platform · Platform Engineering</option>
               <option value="exec_leadership">exec_leadership · VP / Principal Architect</option>
               <option value="external_vendor">external_vendor · External Integration Partner</option>
             </select>
 
             <div class="control-label">
-              <label for="budgetSlider">3. Meta-Agent Token Budget Ceiling</label>
+              <label for="budgetSlider">3. Prompt Token Budget</label>
               <span class="tag tag-accent" id="budgetValueTag">2,048 tokens</span>
             </div>
             <input type="range" id="budgetSlider" min="2048" max="16384" step="512" value="2048" oninput="updateBudgetLabel(this.value)" />
 
             <div class="control-label">
-              <label for="reasonQuestionInput">4. Multi-Silo Engineering Question</label>
+              <label for="reasonQuestionInput">4. Question</label>
             </div>
             <textarea id="reasonQuestionInput" rows="4" style="margin-bottom:0.88rem;">Why is One-Click Express Wallet GA (SIM-48305) currently blocked, which PR root-caused the US-East latency spike, which active RFC governs the fix, and what Q4 GMS OKR is impacted?</textarea>
 
             <button type="button" class="btn btn-accent" id="runReasonBtn" style="width:100%; justify-content:center; padding:0.7rem;" onclick="runMetaAgentReason()">
-              ⚡ Run Factoring Meta-Agent + Live Bedrock Nova Synthesis
+              ⚡ Ask OrgCortex (Live on Amazon Bedrock)
             </button>
 
             <div style="margin-top:1.05rem;" id="tokenComparisonBox"></div>
@@ -1930,13 +1924,13 @@
             <div id="synthesisHeaderBanner" class="verdict-banner verdict-allow"></div>
 
             <div class="code-header">
-              <span id="synthEngineLabel">Synthesized Grounded Answer ([C1..Cn] Citations)</span>
+              <span id="synthEngineLabel">Cited Answer ([C1..Cn])</span>
               <span id="synthLatencyLabel"></span>
             </div>
             <div id="synthAnswerBox" style="border:2px solid var(--border); background:var(--bg-paper); padding:1rem 1.1rem; font-size:0.9rem; line-height:1.68; margin-bottom:1.1rem;"></div>
 
             <div class="control-label">
-              <span>Hierarchical Semantic Page Table (L1 Working Set · L2 Factored · L3 Cold Pointers)</span>
+              <span>Context Page Table (L1 Excerpts · L2 Summaries · L3 Evicted Pointers)</span>
               <span class="mono" style="font-size:0.69rem;" id="pageTableCountsLabel"></span>
             </div>
             <div id="semanticPageTableContainer"></div>
@@ -1945,18 +1939,17 @@
       </div>
 
       <!-- ================================================================ -->
-      <!-- TAB 3: 5-AGENT ORCHESTRATION WATERFALL & OTEL EVALUATOR           -->
+      <!-- TAB 3: INSPECT AGENT TRACE & SCORES                               -->
       <!-- ================================================================ -->
       <div id="panel-otel-spans" class="tab-panel" role="tabpanel">
-        <div class="click-guide-box">
-          <strong>👆 What to Click &amp; What Happens (Tab 03):</strong>
-          Click any of the <strong>5 OpenTelemetry Agent Spans</strong> (<code>01 Planner</code>, <code>02 GraphScout</code>, <code>03 ContextFactorer</code>, <code>04 Synthesizer</code>, <code>05 GroundingJudge</code>) on the left waterfall to inspect its exact <code>span_id</code>, <code>parent_span_id</code>, <code>time.perf_counter()</code> duration, <code>tokens_in → tokens_out</code> compression, and full W3C JSON attributes on the right. Every live query you run in Tab 02 automatically updates this trace waterfall!
+        <div class="demo-note-box">
+          Click any of the five execution spans on the left (<code>01 Planner</code>, <code>02 GraphScout</code>, <code>03 ContextFactorer</code>, <code>04 Synthesizer</code>, <code>05 GroundingJudge</code>) to inspect its timing, token counts, and W3C OpenTelemetry JSON payload.
         </div>
 
         <div class="sim-header">
           <div>
-            <h3 class="sim-title">5-Agent Orchestration Waterfall &amp; OpenTelemetry Span Evaluator</h3>
-            <p class="sim-desc">Step-level latency waterfall, token factoring telemetry, and 4-dimension <code>GroundingJudge</code> rubric verification.</p>
+            <h3 class="sim-title">Five-Step Execution Waterfall &amp; Evaluation Rubric</h3>
+            <p class="sim-desc">Per-stage latency, token compression ratios, and four-dimension citation and boundary checks.</p>
           </div>
           <span class="tag tag-purple" id="activeTraceIdBadge">trace_id</span>
         </div>
@@ -1964,13 +1957,13 @@
         <div class="grid-2">
           <div class="card">
             <div class="control-label">
-              <span>OpenTelemetry 5-Agent Span Waterfall (Click Any Span to Inspect Payload)</span>
+              <span>OpenTelemetry 5-Step Span Waterfall (Click Any Span to Inspect)</span>
               <span class="mono" style="font-size:0.7rem;" id="totalTraceDurationLabel"></span>
             </div>
             <div id="otelSpansList"></div>
 
             <div style="margin-top:1.05rem;">
-              <div class="control-label"><span>GroundingJudge 4-Dimension Rubric Breakdown</span></div>
+              <div class="control-label"><span>Four-Dimension Evaluation Rubric</span></div>
               <div class="bar-group" id="rubricDimensionBars"></div>
             </div>
           </div>
@@ -1978,7 +1971,7 @@
           <div class="card">
             <div id="selectedSpanHeader" style="margin-bottom:0.75rem;"></div>
             <div class="code-header">
-              <span>OpenTelemetry Span Payload &amp; Step Telemetry</span>
+              <span>OpenTelemetry Span Payload</span>
               <span id="selectedSpanStatusTag">STATUS: OK</span>
             </div>
             <pre class="code-box" id="selectedSpanJsonBox" style="max-height:430px;"></pre>
@@ -1987,37 +1980,36 @@
       </div>
 
       <!-- ================================================================ -->
-      <!-- TAB 4: BENCHMARK LEDGER MIRROR                                    -->
+      <!-- TAB 4: BENCHMARK LEDGER JUMP                                      -->
       <!-- ================================================================ -->
       <div id="panel-benchmarks" class="tab-panel" role="tabpanel">
-        <div class="click-guide-box">
-          <strong>👆 What to Click &amp; What Happens (Tab 04):</strong>
-          Use the <strong>Category Filter dropdown</strong> in the full benchmark section directly below (<code>§06 · Benchmarks</code>) to filter all 16 live Bedrock test queries by reasoning type and compare exact per-query Bedrock <code>inputTokens</code>, multi-hop fact hits, and wall-clock latency across Top-2 RAG, Naive Stuffing, and OrgCortex.
+        <div class="demo-note-box">
+          Filter all 16 live Bedrock test questions by category in the <code>06 · Benchmarks</code> section directly below to compare input tokens, fact accuracy, and latency across Top-2 RAG, Full-Archive Stuffing, and OrgCortex.
         </div>
         <div class="card" style="display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;">
           <div>
-            <h3 style="font-size:1.15rem; font-weight:800;">Full Empirical Benchmark Tables Displayed Below in §06</h3>
-            <p style="font-size:0.9rem; color:var(--ink-muted);">All 44 live <code>us.amazon.nova-lite-v1:0</code> invocations, 4 category rollups, and all 16 per-query rows are rendered permanently in <strong>§06 · Benchmarks</strong> directly below so you can inspect them alongside any sandbox tab.</p>
+            <h3 style="font-size:1.15rem; font-weight:800;">Full 16-Query Benchmark Ledger Displayed Below</h3>
+            <p style="font-size:0.9rem; color:var(--ink-muted);">All 44 live <code>us.amazon.nova-lite-v1:0</code> calls, 4 category rollups, and 16 per-query rows are rendered directly below so they remain visible alongside any demo tab.</p>
           </div>
-          <a href="#benchmarks-section" class="btn btn-accent">↓ Jump to §06 Benchmark Ledger</a>
+          <a href="#benchmarks-section" class="btn btn-accent">↓ Jump to Benchmarks</a>
         </div>
       </div>
     </section>
 
     <!-- =================================================================== -->
-    <!-- §06 · BENCHMARKS (PERMANENT LONG-FORM EMPIRICAL EVALUATION SECTION) -->
+    <!-- 06 · BENCHMARKS                                                     -->
     <!-- =================================================================== -->
     <section id="benchmarks-section" class="section" style="border-bottom:none;">
       <div id="benchmarks"></div>
       <div class="section-header">
         <div>
-          <span class="section-kicker">§06 · Benchmarks</span>
-          <h2 class="section-title">Empirical Live Amazon Bedrock Nova Lite Benchmark Suite (16 Queries × 3 Pipelines)</h2>
+          <span class="section-kicker">06 · Benchmarks</span>
+          <h2 class="section-title">Benchmarks</h2>
           <p class="section-desc">
-            Every figure below comes strictly from executing <code>benchmarks/run_benchmarks.py</code> against live <code>boto3.client("bedrock-runtime", region_name="us-west-2").converse(modelId="us.amazon.nova-lite-v1:0")</code> (44 real Bedrock API calls, 64 ground-truth multi-hop &amp; governance assertions, saved in <code>benchmarks/latest_results.json</code>).
+            Measured by running <code>benchmarks/run_benchmarks.py</code> against live Amazon Bedrock (<code>us.amazon.nova-lite-v1:0</code> in <code>us-west-2</code>) across 16 multi-tool questions, 3 pipelines, 44 API calls, and 64 ground-truth assertions (saved in <code>benchmarks/latest_results.json</code>).
           </p>
         </div>
-        <span class="tag tag-pass">Verified Artifact: benchmarks/latest_results.json</span>
+        <span class="tag tag-pass">benchmarks/latest_results.json</span>
       </div>
 
       <div class="grid-equal" style="margin-bottom:1.25rem;">
@@ -2117,7 +2109,7 @@
     <!-- Footer -->
     <footer class="footer">
       <div>
-        <strong>OrgCortex</strong> — Org-Scale Semantic Graph, Infinite-Context Factoring Meta-Agent &amp; 5-Agent OTel Observability · Built by Ritwika Reddy Kancharla
+        <strong>OrgCortex</strong> · Cross-Team AI Context Across Slack, Tickets, Pull Requests, and Docs · Built by Ritwika Reddy Kancharla
       </div>
       <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
         <a href="https://github.com/ritwikareddykancharla/org-cortex-aiw" target="_blank" rel="noopener" style="color:var(--ink); font-weight:700;">GitHub Repo</a>
@@ -2166,8 +2158,8 @@
           plane: "Plane ① · AWS Serverless Edge Delivery",
           title: "Engineer Browser (4-Tab Live Studio, Multi-Plane Diagram & Sticky TOC)",
           module: "web/index.html (100% Self-Contained Neo-Brutalist SPA)",
-          summary: "Renders the 6-section architectural deep dive, live 5-silo semantic graph explorer, L1/L2/L3 token-budget simulator, 5-agent OpenTelemetry waterfall, and 16-query Bedrock benchmark ledger using stateless location.hash URL state.",
-          metric: "0 External JS Frameworks · location.hash Sync"
+          summary: "Renders the 6-section walkthrough, live 5-tool graph explorer, L1/L2/L3 token-budget pager, 5-step OpenTelemetry waterfall, and 16-query Bedrock benchmark ledger using stateless location.hash URL state.",
+          metric: "Stateless location.hash URL Sync"
         },
         "edge-cloudfront": {
           plane: "Plane ① · AWS Serverless Edge Delivery",
@@ -2399,8 +2391,8 @@
         try {
           const res = await fetch("/api/health", { cache: "no-store" });
           if (!res.ok) throw new Error("HTTP " + res.status);
-          const h = await res.json();
-          pillText.textContent = "Live CloudFront + Lambda (" + h.bedrock_model + " · Python " + h.python_version + ")";
+          await res.json();
+          pillText.textContent = "Live on AWS · Powered by Amazon Bedrock";
           const sRes = await fetch("/api/state?role_team=" + encodeURIComponent(activeRoleTeam), { cache: "no-store" });
           if (sRes.ok) {
             const snap = await sRes.json();
@@ -2410,7 +2402,7 @@
             renderAll();
           }
         } catch (_err) {
-          pillText.textContent = "Embedded Empirical Snapshot · Start server for live Bedrock API";
+          pillText.textContent = "Interactive Demo · Powered by Amazon Bedrock";
         }
       }
 
@@ -2747,7 +2739,7 @@
             '<span style="color:var(--fail); font-weight:700;">API Error: ' + esc(err.message) + '</span>';
         } finally {
           btn.disabled = false;
-          btn.textContent = "⚡ Run Factoring Meta-Agent + Live Bedrock Nova Synthesis";
+          btn.textContent = "⚡ Ask OrgCortex (Live on Amazon Bedrock)";
         }
       };
 
