@@ -1,8 +1,8 @@
 # OrgCortex — Org-Scale Semantic Graph, Infinite-Context Factoring Meta-Agent & Agent Observability
 
-**Live Production App (Amazon CloudFront + Private S3 OAC + Python 3.12 Lambda + Bedrock Nova):** https://dbua6obpic3fk.cloudfront.net
+**Live Production App (Amazon CloudFront + Private S3 OAC + AWS Lambda + Bedrock Nova):** https://dbua6obpic3fk.cloudfront.net
 
-**OrgCortex** is a 100% serverless organizational reasoning and context-management runtime built in zero-dependency Python 3.12 (`org_cortex/`) + **Amazon Bedrock (`us.amazon.nova-lite-v1:0`)**:
+**OrgCortex** is a 100% serverless organizational reasoning and context-management runtime implemented across `org_cortex/` + **Amazon Bedrock (`us.amazon.nova-lite-v1:0`)**:
 
 1. **Cross-Silo Semantic Graph & Dynamic Relationship Discovery**: Automatically discovers and encodes directed causal edges (`BLOCKS`, `SUPERSEDES_RFC`, `ROOT_CAUSED_BY_PR`, `OWNED_BY_TEAM`, `IMPACTS_OKR`) across **5 enterprise silos** (`30` heterogeneous artifacts, `53` discovered edges): Slack/Chime War-Rooms, Jira/SIM Tickets, Git Pull Requests, Architecture RFCs, and Quarterly OKR Ledgers—dynamically propagating `SUPERSEDED` status onto replaced RFCs (`RFC-084`, `RFC-112`, `RFC-120`).
 2. **Governed Team-Scope Access Boundaries (`AWS Context`)**: Enforces caller `role_team` set-intersection permissions (`exec_leadership`, `payments_sre`, `core_platform`, `external_vendor`) **prior** to candidate scoring and graph traversal, short-circuiting restricted entity probes in `0.4–1.0 ms` with **`0.0%` unauthorized cross-team leakage**.
@@ -56,7 +56,7 @@ Measured live across **16 multi-silo enterprise questions × 3 pipelines (`44` l
   - `AdaptiveContextManager.factor_context()`: Allocates caller `token_budget` across stripped **L1** spans (`44%`) and compressed **L2** causal propositions (`56%`), evicting all `SUPERSEDED` RFCs and low-salience distractors to **L3** `ctx://` SHA-256 pointers (`0` prompt tokens).
 - **`org_cortex/server.py`**:
   - Pure `route_api_request` + AWS Lambda Function URL `lambda_handler` serving `GET /api/health`, `GET /api/state`, `POST /api/graph/discover`, `POST /api/meta-agent/reason`, and `POST /api/reset`.
-- **100% Serverless Delivery**: Static Neo-Brutalist Studio (`web/index.html`) served from a private Amazon S3 bucket via CloudFront SigV4 OAC + on-demand Python 3.12 Lambda `/api/*` origin (zero EC2, RDS, or GPU instances).
+- **100% Serverless Delivery**: Static Neo-Brutalist Studio (`web/index.html`) served from a private Amazon S3 bucket via CloudFront SigV4 OAC + on-demand AWS Lambda `/api/*` origin (zero EC2, RDS, or GPU instances).
 
 ---
 
@@ -75,6 +75,6 @@ uv run --with "boto3" --with "botocore[crt]" python3 benchmarks/run_benchmarks.p
 PYTHONPATH=. python3 -m org_cortex.server
 # -> Open http://localhost:3097
 
-# 4. Deploy to AWS CloudFront + Private S3 (OAC) + Python 3.12 Lambda + Bedrock Nova
+# 4. Deploy to AWS CloudFront + Private S3 (OAC) + AWS Lambda + Bedrock Nova
 ./infra/deploy_cloudfront.sh
 ```

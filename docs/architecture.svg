@@ -60,12 +60,12 @@
     <text x="775" y="78" text-anchor="middle" class="ex-mono" font-size="9.3" fill="#065F46">web/index.html · BlockPublicAccess</text>
   </g>
 
-  <!-- Node 3b: Python 3.12 Lambda -->
+  <!-- Node 3b: AWS Lambda -->
   <g class="ex-node" data-arch-node="edge-lambda" tabindex="0">
     <path d="M 640,98 Q 775,95 910,99 Q 913,124 909,150 Q 774,153 641,149 Q 637,123 640,98 Z" fill="#E0E7FF" />
     <path class="ex-stroke-main" d="M 640,98 Q 775,95 910,99 Q 913,124 909,150 Q 774,153 641,149 Q 637,123 640,98 Z" fill="none" stroke="#18181B" stroke-width="2" />
     <path d="M 643,101 Q 776,98 907,101 Q 909,124 906,147 Q 773,150 644,147 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
-    <text x="775" y="120" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">AWS Lambda (Python 3.12)</text>
+    <text x="775" y="120" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">AWS Lambda</text>
     <text x="775" y="139" text-anchor="middle" class="ex-mono" font-size="9.3" fill="#312E81">org_cortex/server.py · /api/*</text>
   </g>
 
