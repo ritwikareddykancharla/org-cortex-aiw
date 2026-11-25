@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "org-cortex-aiw"
+version = "1.0.0"
+description = "Org-Scale Cross-Silo Semantic Graph, Infinite-Context Factoring Meta-Agent & 5-Agent OpenTelemetry Observability Runtime on Amazon Bedrock Nova"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["org_cortex*"]

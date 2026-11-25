@@ -1,0 +1,251 @@
+<svg viewBox="0 0 1220 790" width="1220" height="790" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="archDotGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.1" fill="#D4D4D8" />
+    </pattern>
+  </defs>
+  <style>
+    .ex-hand { font-family: 'Caveat', 'Kalam', 'Comic Sans MS', cursive; }
+    .ex-mono { font-family: 'Martian Mono', 'Menlo', monospace; }
+  </style>
+
+  <!-- Crisp Whiteboard Dot-Grid Base -->
+  <rect x="0" y="0" width="1220" height="790" fill="#FFFFFF" />
+  <rect x="0" y="0" width="1220" height="790" fill="url(#archDotGrid)" opacity="0.72" />
+
+  <!-- ===================================================================== -->
+  <!-- PLANE 1: AWS SERVERLESS EDGE DELIVERY                                 -->
+  <!-- ===================================================================== -->
+  <path d="M 22,16 Q 610,12 1196,17 Q 1201,88 1195,158 Q 608,162 24,157 Q 19,87 22,16 Z" fill="#FAFAFA" stroke="#71717A" stroke-width="1.6" stroke-dasharray="8 6" />
+  <text x="36" y="39" class="ex-hand" font-size="21" font-weight="700" fill="#4F46E5">① AWS Serverless Edge Delivery Plane (100% Serverless · 0 EC2 · 0 RDS · 0 GPU)</text>
+
+  <!-- Node 1: Browser Studio -->
+  <g class="ex-node selected" data-arch-node="edge-browser" tabindex="0">
+    <path d="M 38,52 Q 135,49 232,53 Q 236,94 231,135 Q 134,138 39,134 Q 35,93 38,52 Z" fill="#E0E7FF" />
+    <path class="ex-stroke-main" d="M 38,52 Q 135,49 232,53 Q 236,94 231,135 Q 134,138 39,134 Q 35,93 38,52 Z" fill="none" stroke="#18181B" stroke-width="2.1" stroke-linejoin="round" />
+    <path d="M 41,55 Q 136,52 229,56 Q 232,94 228,132 Q 133,135 42,131 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="135" y="79" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#18181B">Engineer Browser</text>
+    <text x="135" y="101" text-anchor="middle" class="ex-mono" font-size="9.8" font-weight="600" fill="#312E81">4-Tab Studio &amp; Sticky TOC</text>
+    <text x="135" y="119" text-anchor="middle" class="ex-mono" font-size="9.2" fill="#3F3F46">location.hash · Stateless UI</text>
+  </g>
+
+  <path d="M 235,94 Q 266,90 298,94" fill="none" stroke="#18181B" stroke-width="2.1" stroke-dasharray="6 4" stroke-linecap="round" />
+  <path d="M 289,88 L 300,94 L 289,100" fill="none" stroke="#18181B" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="267" y="83" text-anchor="middle" class="ex-hand" font-size="16" font-weight="700" fill="#18181B">HTTPS</text>
+
+  <!-- Node 2: Amazon CloudFront -->
+  <g class="ex-node" data-arch-node="edge-cloudfront" tabindex="0">
+    <path d="M 304,52 Q 430,48 556,53 Q 560,94 555,135 Q 428,139 305,134 Q 301,93 304,52 Z" fill="#FFE8D6" />
+    <path class="ex-stroke-main" d="M 304,52 Q 430,48 556,53 Q 560,94 555,135 Q 428,139 305,134 Q 301,93 304,52 Z" fill="none" stroke="#18181B" stroke-width="2.1" stroke-linejoin="round" />
+    <path d="M 307,55 Q 431,51 553,56 Q 556,94 552,132 Q 429,136 308,131 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="430" y="79" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#18181B">Amazon CloudFront CDN</text>
+    <text x="430" y="101" text-anchor="middle" class="ex-mono" font-size="9.8" font-weight="600" fill="#9A3412">TLS 1.3 · HTTP/3 · SigV4 OAC</text>
+    <text x="430" y="119" text-anchor="middle" class="ex-mono" font-size="9.2" fill="#3F3F46">Routes /* static &amp; /api/*</text>
+  </g>
+
+  <path d="M 559,75 Q 596,64 634,64" fill="none" stroke="#18181B" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" />
+  <path d="M 625,58 L 636,64 L 625,70" fill="none" stroke="#18181B" stroke-width="2" />
+  <text x="596" y="57" text-anchor="middle" class="ex-hand" font-size="15" font-weight="700" fill="#065F46">OAC GET</text>
+
+  <path d="M 559,112 Q 596,124 634,124" fill="none" stroke="#18181B" stroke-width="2" stroke-dasharray="6 4" stroke-linecap="round" />
+  <path d="M 625,118 L 636,124 L 625,130" fill="none" stroke="#18181B" stroke-width="2" />
+  <text x="596" y="141" text-anchor="middle" class="ex-hand" font-size="15" font-weight="700" fill="#4F46E5">/api/*</text>
+
+  <!-- Node 3a: Private S3 Bucket -->
+  <g class="ex-node" data-arch-node="edge-s3" tabindex="0">
+    <path d="M 640,38 Q 775,35 910,39 Q 913,63 909,88 Q 774,91 641,87 Q 637,62 640,38 Z" fill="#DCFCE7" />
+    <path class="ex-stroke-main" d="M 640,38 Q 775,35 910,39 Q 913,63 909,88 Q 774,91 641,87 Q 637,62 640,38 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 643,41 Q 776,38 907,41 Q 909,63 906,85 Q 773,88 644,85 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="775" y="60" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">Private S3 Bucket (OAC)</text>
+    <text x="775" y="78" text-anchor="middle" class="ex-mono" font-size="9.3" fill="#065F46">web/index.html · BlockPublicAccess</text>
+  </g>
+
+  <!-- Node 3b: Python 3.12 Lambda -->
+  <g class="ex-node" data-arch-node="edge-lambda" tabindex="0">
+    <path d="M 640,98 Q 775,95 910,99 Q 913,124 909,150 Q 774,153 641,149 Q 637,123 640,98 Z" fill="#E0E7FF" />
+    <path class="ex-stroke-main" d="M 640,98 Q 775,95 910,99 Q 913,124 909,150 Q 774,153 641,149 Q 637,123 640,98 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 643,101 Q 776,98 907,101 Q 909,124 906,147 Q 773,150 644,147 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="775" y="120" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">AWS Lambda (Python 3.12)</text>
+    <text x="775" y="139" text-anchor="middle" class="ex-mono" font-size="9.3" fill="#312E81">org_cortex/server.py · /api/*</text>
+  </g>
+
+  <!-- Tilted Yellow Sticky Note -->
+  <g transform="rotate(-1.7 1056 94)">
+    <path d="M 934,38 L 1180,38 L 1180,134 L 1162,150 L 934,150 Z" fill="#FEF3C7" stroke="#18181B" stroke-width="2" />
+    <path d="M 1162,150 L 1162,134 L 1180,134" fill="#FDE68A" stroke="#18181B" stroke-width="1.6" />
+    <text x="948" y="64" class="ex-hand" font-size="19" font-weight="700" fill="#92400E">📌 Measured Bedrock Gains</text>
+    <text x="948" y="87" class="ex-hand" font-size="17" font-weight="600" fill="#18181B">• -88.1% inputTokens (8.38x)</text>
+    <text x="948" y="108" class="ex-hand" font-size="17" font-weight="600" fill="#18181B">• 98.4% recall (63/64 facts)</text>
+    <text x="948" y="129" class="ex-hand" font-size="17" font-weight="700" fill="#065F46">• 0.0% cross-team leakage</text>
+  </g>
+
+  <!-- ===================================================================== -->
+  <!-- PLANE 2: FIVE HETEROGENEOUS ENTERPRISE SILOS                          -->
+  <!-- ===================================================================== -->
+  <path d="M 22,182 Q 610,178 1196,183 Q 1200,248 1195,312 Q 608,316 24,311 Q 19,247 22,182 Z" fill="#F8FAFC" stroke="#1D4ED8" stroke-width="1.6" stroke-dasharray="8 6" />
+  <text x="36" y="205" class="ex-hand" font-size="21" font-weight="700" fill="#1D4ED8">② Five Heterogeneous Organizational Silos (30 Enterprise Artifacts · 53 Discovered Cross-Silo Edges)</text>
+
+  <!-- Silo 1..5 Nodes -->
+  <g class="ex-node" data-arch-node="silo-slack" tabindex="0">
+    <path d="M 38,220 Q 138,217 238,221 Q 241,259 237,297 Q 137,300 39,296 Q 35,258 38,220 Z" fill="#E0E7FF" />
+    <path class="ex-stroke-main" d="M 38,220 Q 138,217 238,221 Q 241,259 237,297 Q 137,300 39,296 Q 35,258 38,220 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 41,223 Q 139,220 235,224 Q 238,259 234,294 Q 136,297 42,293 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="138" y="246" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">💬 Slack War-Rooms</text>
+    <text x="138" y="267" text-anchor="middle" class="ex-mono" font-size="9.2" font-weight="600" fill="#312E81">SLACK-WAR-771 · AIW-309</text>
+    <text x="138" y="284" text-anchor="middle" class="ex-mono" font-size="8.8" fill="#3F3F46">Live flamegraphs &amp; bisects</text>
+  </g>
+
+  <g class="ex-node" data-arch-node="silo-sim" tabindex="0">
+    <path d="M 268,220 Q 368,217 468,221 Q 471,259 467,297 Q 367,300 269,296 Q 265,258 268,220 Z" fill="#FEF3C7" />
+    <path class="ex-stroke-main" d="M 268,220 Q 368,217 468,221 Q 471,259 467,297 Q 367,300 269,296 Q 265,258 268,220 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 271,223 Q 369,220 465,224 Q 468,259 464,294 Q 366,297 272,293 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="368" y="246" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">🎫 Jira / SIM Tickets</text>
+    <text x="368" y="267" text-anchor="middle" class="ex-mono" font-size="9.2" font-weight="600" fill="#92400E">SIM-48291 · SIM-48305</text>
+    <text x="368" y="284" text-anchor="middle" class="ex-mono" font-size="8.8" fill="#3F3F46">SEV-2 alarms &amp; GA gates</text>
+  </g>
+
+  <g class="ex-node" data-arch-node="silo-pr" tabindex="0">
+    <path d="M 498,220 Q 598,217 698,221 Q 701,259 697,297 Q 597,300 499,296 Q 495,258 498,220 Z" fill="#DBEAFE" />
+    <path class="ex-stroke-main" d="M 498,220 Q 598,217 698,221 Q 701,259 697,297 Q 597,300 499,296 Q 495,258 498,220 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 501,223 Q 599,220 695,224 Q 698,259 694,294 Q 596,297 502,293 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="598" y="246" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">🔀 Git Pull Requests</text>
+    <text x="598" y="267" text-anchor="middle" class="ex-mono" font-size="9.2" font-weight="600" fill="#1E3A8A">PR-9412 · PR-9448 · 10204</text>
+    <text x="598" y="284" text-anchor="middle" class="ex-mono" font-size="8.8" fill="#3F3F46">Unified diffs &amp; regressions</text>
+  </g>
+
+  <g class="ex-node" data-arch-node="silo-rfc" tabindex="0">
+    <path d="M 728,220 Q 836,217 944,221 Q 947,259 943,297 Q 835,300 729,296 Q 725,258 728,220 Z" fill="#F3E8FF" />
+    <path class="ex-stroke-main" d="M 728,220 Q 836,217 944,221 Q 947,259 943,297 Q 835,300 729,296 Q 725,258 728,220 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 731,223 Q 837,220 941,224 Q 944,259 940,294 Q 834,297 732,293 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="836" y="246" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">📐 Architecture RFCs</text>
+    <text x="836" y="267" text-anchor="middle" class="ex-mono" font-size="9.2" font-weight="600" fill="#5B21B6">RFC-089  supersedes 084</text>
+    <text x="836" y="284" text-anchor="middle" class="ex-mono" font-size="8.8" fill="#3F3F46">Active vs obsolete lineage</text>
+  </g>
+
+  <g class="ex-node" data-arch-node="silo-okr" tabindex="0">
+    <path d="M 972,220 Q 1076,217 1180,221 Q 1183,259 1179,297 Q 1075,300 973,296 Q 969,258 972,220 Z" fill="#DCFCE7" />
+    <path class="ex-stroke-main" d="M 972,220 Q 1076,217 1180,221 Q 1183,259 1179,297 Q 1075,300 973,296 Q 969,258 972,220 Z" fill="none" stroke="#18181B" stroke-width="2" />
+    <path d="M 975,223 Q 1077,220 1177,224 Q 1180,259 1176,294 Q 1074,297 976,293 Z" fill="none" stroke="#18181B" stroke-width="1" opacity="0.6" />
+    <text x="1076" y="246" text-anchor="middle" class="ex-hand" font-size="20" font-weight="700" fill="#18181B">🎯 Quarterly OKRs</text>
+    <text x="1076" y="267" text-anchor="middle" class="ex-mono" font-size="9.2" font-weight="600" fill="#065F46">CHK ($14.8M) · AIW (42k)</text>
+    <text x="1076" y="284" text-anchor="middle" class="ex-mono" font-size="8.8" fill="#3F3F46">Revenue &amp; SLA targets</text>
+  </g>
+
+  <!-- Vertical Connectors from Silos into Plane 3 -->
+  <path d="M 368,299 Q 368,325 368,346" fill="none" stroke="#18181B" stroke-width="2" stroke-dasharray="5 4" />
+  <path d="M 362,338 L 368,348 L 374,338" fill="none" stroke="#18181B" stroke-width="2" />
+  <path d="M 836,299 Q 836,325 836,346" fill="none" stroke="#18181B" stroke-width="2" stroke-dasharray="5 4" />
+  <path d="M 830,338 L 836,348 L 842,338" fill="none" stroke="#18181B" stroke-width="2" />
+
+  <!-- ===================================================================== -->
+  <!-- PLANE 3: GOVERNED SEMANTIC GRAPH & AWS CONTEXT ACL GATE               -->
+  <!-- ===================================================================== -->
+  <path d="M 22,344 Q 610,340 1196,345 Q 1200,418 1195,490 Q 608,494 24,489 Q 19,417 22,344 Z" fill="#FEF2F2" stroke="#991B1B" stroke-width="1.6" stroke-dasharray="8 6" />
+  <text x="36" y="368" class="ex-hand" font-size="21" font-weight="700" fill="#991B1B">③ Governed Organizational Semantic Graph — AWS Context Pre-Traversal Team-ACL Gate + 4-Hop Activation</text>
+
+  <!-- AWS Context ACL Gate -->
+  <g class="ex-node" data-arch-node="acl-gate" tabindex="0">
+    <path d="M 38,384 Q 214,380 390,385 Q 394,430 389,474 Q 213,478 39,473 Q 35,429 38,384 Z" fill="#FEE2E2" />
+    <path class="ex-stroke-main" d="M 38,384 Q 214,380 390,385 Q 394,430 389,474 Q 213,478 39,473 Q 35,429 38,384 Z" fill="none" stroke="#18181B" stroke-width="2.1" />
+    <path d="M 41,387 Q 215,384 387,388 Q 390,430 386,471 Q 212,475 42,470 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="214" y="411" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#991B1B">🛡️ AWS Context Team-ACL Gate</text>
+    <text x="214" y="433" text-anchor="middle" class="ex-mono" font-size="9.5" font-weight="600" fill="#18181B">Pre-Traversal Scope Enforcement</text>
+    <text x="214" y="453" text-anchor="middle" class="ex-mono" font-size="9.1" fill="#7F1D1D">Short-circuits restricted IDs in &lt;1ms · 0.0% leak</text>
+  </g>
+
+  <path d="M 393,430 L 424,430" stroke="#18181B" stroke-width="2.1" />
+  <path d="M 416,424 L 426,430 L 416,436" fill="none" stroke="#18181B" stroke-width="2.1" />
+
+  <!-- Dynamic Relationship Linker -->
+  <g class="ex-node" data-arch-node="edge-discovery" tabindex="0">
+    <path d="M 430,384 Q 612,380 794,385 Q 798,430 793,474 Q 611,478 431,473 Q 427,429 430,384 Z" fill="#FFFFFF" />
+    <path class="ex-stroke-main" d="M 430,384 Q 612,380 794,385 Q 798,430 793,474 Q 611,478 431,473 Q 427,429 430,384 Z" fill="none" stroke="#18181B" stroke-width="2.1" />
+    <path d="M 433,387 Q 613,384 791,388 Q 794,430 790,471 Q 610,475 434,470 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="612" y="411" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#18181B">5 Typed Cross-Silo Edge Schemas</text>
+    <text x="612" y="433" text-anchor="middle" class="ex-mono" font-size="9.3" font-weight="600" fill="#4F46E5">BLOCKS · SUPERSEDES_RFC · ROOT_CAUSED_BY_PR</text>
+    <text x="612" y="453" text-anchor="middle" class="ex-mono" font-size="9.3" font-weight="600" fill="#065F46">IMPACTS_OKR · OWNED_BY_TEAM (/api/graph/discover)</text>
+  </g>
+
+  <path d="M 797,430 L 828,430" stroke="#18181B" stroke-width="2.1" />
+  <path d="M 820,424 L 830,430 L 820,436" fill="none" stroke="#18181B" stroke-width="2.1" />
+
+  <!-- 4-Hop Spreading Activation -->
+  <g class="ex-node" data-arch-node="graph-scout" tabindex="0">
+    <path d="M 834,384 Q 1007,380 1180,385 Q 1184,430 1179,474 Q 1006,478 835,473 Q 831,429 834,384 Z" fill="#E0E7FF" />
+    <path class="ex-stroke-main" d="M 834,384 Q 1007,380 1180,385 Q 1184,430 1179,474 Q 1006,478 835,473 Q 831,429 834,384 Z" fill="none" stroke="#18181B" stroke-width="2.1" />
+    <path d="M 837,387 Q 1008,384 1177,388 Q 1180,430 1176,471 Q 1005,475 838,470 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="1007" y="411" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#312E81">GraphScout 4-Hop Walk</text>
+    <text x="1007" y="433" text-anchor="middle" class="ex-mono" font-size="9.4" font-weight="600" fill="#18181B">BM25 Seeds + 0.90^hop Propagation</text>
+    <text x="1007" y="453" text-anchor="middle" class="ex-mono" font-size="9.1" fill="#312E81">Auto-promotes active superseding RFCs</text>
+  </g>
+
+  <!-- Arrow from Plane 3 to Plane 4 -->
+  <path d="M 612,477 Q 612,500 612,518" fill="none" stroke="#18181B" stroke-width="2.1" stroke-dasharray="6 4" />
+  <path d="M 606,510 L 612,520 L 618,510" fill="none" stroke="#18181B" stroke-width="2.1" />
+
+  <!-- ===================================================================== -->
+  <!-- PLANE 4: ADAPTIVE CONTEXT MANAGER — 3-TIER SEMANTIC PAGE TABLE        -->
+  <!-- ===================================================================== -->
+  <g class="ex-node" data-arch-node="page-table" tabindex="0">
+    <path d="M 22,520 Q 610,516 1196,521 Q 1200,586 1195,650 Q 608,654 24,649 Q 19,585 22,520 Z" fill="#F0FDF4" />
+    <path class="ex-stroke-main" d="M 22,520 Q 610,516 1196,521 Q 1200,586 1195,650 Q 608,654 24,649 Q 19,585 22,520 Z" fill="none" stroke="#18181B" stroke-width="2.1" />
+    <text x="36" y="544" class="ex-hand" font-size="21" font-weight="700" fill="#065F46">④ AdaptiveContextManager — Hierarchical L1 / L2 / L3 Semantic Page Table (2.389 ms p50 Overhead)</text>
+
+    <!-- L1 -->
+    <path d="M 40,558 Q 214,555 388,559 Q 391,598 387,636 Q 213,639 41,635 Q 37,597 40,558 Z" fill="#E0E7FF" stroke="#18181B" stroke-width="1.9" />
+    <text x="214" y="582" text-anchor="middle" class="ex-hand" font-size="19.5" font-weight="700" fill="#18181B">L1 · Active Working Set</text>
+    <text x="214" y="603" text-anchor="middle" class="ex-mono" font-size="9.1" fill="#312E81">Top focal spans · diffs/JSON stripped</text>
+    <text x="214" y="621" text-anchor="middle" class="ex-mono" font-size="8.9" font-weight="700" fill="#065F46">0 Superseded RFCs Permitted</text>
+
+    <path d="M 392,597 L 424,597" stroke="#18181B" stroke-width="2" />
+    <path d="M 417,592 L 426,597 L 417,602" fill="none" stroke="#18181B" stroke-width="2" />
+
+    <!-- L2 -->
+    <path d="M 430,558 Q 610,555 790,559 Q 793,598 789,636 Q 609,639 431,635 Q 427,597 430,558 Z" fill="#FEF3C7" stroke="#18181B" stroke-width="1.9" />
+    <text x="610" y="582" text-anchor="middle" class="ex-hand" font-size="19.5" font-weight="700" fill="#18181B">L2 · Factored Sub-Goal Summaries</text>
+    <text x="610" y="603" text-anchor="middle" class="ex-mono" font-size="9.1" fill="#92400E">Multi-hop entity + metric propositions</text>
+    <text x="610" y="621" text-anchor="middle" class="ex-mono" font-size="8.9" fill="#78350F">Preserves SIM/PR/RFC/OKR causal edges</text>
+
+    <path d="M 794,597 L 826,597" stroke="#18181B" stroke-width="2" />
+    <path d="M 819,592 L 828,597 L 819,602" fill="none" stroke="#18181B" stroke-width="2" />
+
+    <!-- L3 -->
+    <path d="M 832,558 Q 1006,555 1180,559 Q 1183,598 1179,636 Q 1005,639 833,635 Q 829,597 832,558 Z" fill="#F4F4F5" stroke="#18181B" stroke-width="1.9" stroke-dasharray="6 4" />
+    <text x="1006" y="582" text-anchor="middle" class="ex-hand" font-size="19.5" font-weight="700" fill="#18181B">L3 · Evicted Cold Pointers (0 tok)</text>
+    <text x="1006" y="603" text-anchor="middle" class="ex-mono" font-size="9.1" fill="#52525B">ctx://org-cortex/&lt;silo&gt;/&lt;id&gt;#sha256</text>
+    <text x="1006" y="621" text-anchor="middle" class="ex-mono" font-size="8.9" font-weight="700" fill="#DC2626">Evicts RFC-084 / 112 / 120 &amp; UI noise</text>
+  </g>
+
+  <!-- Arrows from Plane 4 to Plane 5 -->
+  <path d="M 380,652 Q 340,670 310,684" fill="none" stroke="#4F46E5" stroke-width="2.1" stroke-dasharray="6 4" />
+  <path d="M 318,676 L 308,685 L 321,686" fill="none" stroke="#4F46E5" stroke-width="2.1" />
+  <text x="415" y="674" class="ex-hand" font-size="16" font-weight="700" fill="#4F46E5">Factored L1 + L2 Pages Only</text>
+
+  <path d="M 840,652 Q 890,670 920,684" fill="none" stroke="#065F46" stroke-width="2.1" stroke-dasharray="6 4" />
+  <path d="M 910,685 L 923,685 L 914,676" fill="none" stroke="#065F46" stroke-width="2.1" />
+  <text x="805" y="674" class="ex-hand" font-size="16" font-weight="700" fill="#065F46">5-Span W3C OTel Waterfall</text>
+
+  <!-- ===================================================================== -->
+  <!-- PLANE 5: BEDROCK NOVA SYNTHESIS + GROUNDINGJUDGE OTEL EVALUATOR       -->
+  <!-- ===================================================================== -->
+  <g class="ex-node" data-arch-node="bedrock-synth" tabindex="0">
+    <path d="M 32,686 Q 312,682 592,687 Q 596,731 591,774 Q 310,778 34,773 Q 29,730 32,686 Z" fill="#F3E8FF" />
+    <path class="ex-stroke-main" d="M 32,686 Q 312,682 592,687 Q 596,731 591,774 Q 310,778 34,773 Q 29,730 32,686 Z" fill="none" stroke="#18181B" stroke-width="2.2" />
+    <path d="M 35,689 Q 313,686 589,690 Q 592,731 588,771 Q 311,775 37,770 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="312" y="715" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#5B21B6">⑤ Amazon Bedrock Nova Lite Synthesizer</text>
+    <text x="312" y="738" text-anchor="middle" class="ex-mono" font-size="9.6" font-weight="700" fill="#18181B">boto3 converse(us.amazon.nova-lite-v1:0 · us-west-2)</text>
+    <text x="312" y="758" text-anchor="middle" class="ex-mono" font-size="9.2" fill="#4C1D95">Inline [C1..Cn] Citations · Exact Bedrock inputTokens</text>
+  </g>
+
+  <path d="M 596,730 L 626,730" fill="none" stroke="#18181B" stroke-width="2.1" stroke-dasharray="5 4" />
+  <path d="M 618,724 L 628,730 L 618,736" fill="none" stroke="#18181B" stroke-width="2.1" />
+
+  <g class="ex-node" data-arch-node="otel-judge" tabindex="0">
+    <path d="M 632,686 Q 914,682 1196,687 Q 1200,731 1195,774 Q 912,778 634,773 Q 629,730 632,686 Z" fill="#FEF3C7" />
+    <path class="ex-stroke-main" d="M 632,686 Q 914,682 1196,687 Q 1200,731 1195,774 Q 912,778 634,773 Q 629,730 632,686 Z" fill="none" stroke="#18181B" stroke-width="2.2" />
+    <path d="M 635,689 Q 915,686 1193,690 Q 1196,731 1192,771 Q 913,775 637,770 Z" fill="none" stroke="#18181B" stroke-width="1.1" opacity="0.6" />
+    <text x="914" y="715" text-anchor="middle" class="ex-hand" font-size="22" font-weight="700" fill="#92400E">⑤ 5-Agent OTel Waterfall &amp; GroundingJudge</text>
+    <text x="914" y="738" text-anchor="middle" class="ex-mono" font-size="9.5" font-weight="700" fill="#18181B">Planner → GraphScout → ContextFactorer → Synth → Judge</text>
+    <text x="914" y="758" text-anchor="middle" class="ex-mono" font-size="9.2" fill="#065F46">Grades Citation Precision, Supersession Hygiene &amp; 0.0% Leak</text>
+  </g>
+</svg>
